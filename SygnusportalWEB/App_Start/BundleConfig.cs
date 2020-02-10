@@ -24,7 +24,33 @@ namespace SygnusportalWEB
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/site.css",
+                      "~/Content/all.css",
+                      "~/Content/DataTables/css/dataTables.bootstrap.css"));
+
+
+            bundles.Add(new ScriptBundle("~/bundles/datatables").Include(
+                   "~/Scripts/DataTables/jquery.dataTables.js", "~/Scripts/DataTables/dataTables.tableTools.js",
+                  "~/Scripts/DataTables/dataTables.scroller.min.js",
+                   "~/Scripts/DataTables/dataTables.bootstrap.js"));
+
+            bundles.Add(new ScriptBundle("~/Scripts/bootstrap").Include(
+          "~/Scripts/bootstrap.js",
+          "~/Scripts/bootstrap-datetimepicker.min.js",
+          "~/Scripts/respond.js"));
+
+
+            bundles.Add(new ScriptBundle("~/bundles/jqueryui").Include(
+                    "~/Scripts/jquery-ui-1.12.1.js"));
+
+            bundles.Add(new StyleBundle("~/Content/cssjqryUi").Include(
+                    "~/Content/jquery-ui.css"));
+
+
+            bundles.Add(new ScriptBundle("~/bundles/jqueryui").Include(
+            "~/Scripts/jquery-ui-{version}.js"));
+            bundles.Add(new StyleBundle("~/Content/cssjqryUi").Include(
+            "~/Content/jquery-ui.css"));
         }
     }
 }

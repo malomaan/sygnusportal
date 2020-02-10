@@ -1,6 +1,7 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    font-family: 'Cairo', sans-serif;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -20,5 +21,32 @@
 input,
 select,
 textarea {
-    max-width: 280px;
+    max-width: 95%;
+}
+
+/*Personalizar*/
+
+/*Boton Grid*/
+.btn-grid {
+    width: 80px;
+    font-size: 12px;
+}
+
+.control-label {
+    font-size: 12px;
+    font-weight: normal;
+}
+
+.table-bordered > thead > tr > th, .table-bordered > thead > tr > td {
+    border-bottom-width: 0px;
+}
+
+/*Alinear los botones de los paneles a la derecha*/
+.panel-footer {
+    padding: 10px 15px;
+    background-color: #f5f5f5;
+    border-top: 1px solid #ddd;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    text-align: center;
 }

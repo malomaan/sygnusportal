@@ -1,0 +1,78 @@
+﻿@model SygnusportalBD.Pais
+
+@{
+    ViewBag.Title = "Create";
+}
+<p>
+
+</p>
+<ul class="nav nav-tabs">
+    <li><a href="@Url.Action("Index")">Paises</a></li>
+    <li class="active"><a href="@Url.Action("Create")">Nuevo</a></li>
+</ul>
+<div class="panel-group">
+    <div class="panel panel-success">
+        <div class="panel-body">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.pai_codigo, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.pai_codigo, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.pai_codigo, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.pai_nombre, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.pai_nombre, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.pai_nombre, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.pai_codigointernacional, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.pai_codigointernacional, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.pai_codigointernacional, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.pai_predeterminado, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <div class="checkbox">
+                                @Html.EditorFor(model => model.pai_predeterminado)
+                                @Html.ValidationMessageFor(model => model.pai_predeterminado, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="panel-footer">
+            @if (ViewBag.Err != null)
+            {
+                <div class="alert alert-danger">@ViewBag.Err</div>
+            }
+
+            <button type="submit" id="btnSubmit" class="btn btn-info btn-sm">
+                <span class="glyphicon glyphicon-ok"></span> Guardar
+            </button>
+            <a class='btn btn-danger btn-sm' href="@Url.Action("Index")">
+                <span class="glyphicon glyphicon-remove"></span> Cancelar
+            </a>
+
+        </div>            @section Scripts {
+            @Scripts.Render("~/bundles/jqueryval")
+        }
+
+    </div>
+</div>
+
+
