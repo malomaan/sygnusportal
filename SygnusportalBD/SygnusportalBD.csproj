@@ -53,24 +53,28 @@
     <Compile Include="Ciudad.cs">
       <DependentUpon>sygnusportalModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="CiudadBD.cs" />
     <Compile Include="Ciudad_List_Result.cs">
       <DependentUpon>sygnusportalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Departamento.cs">
       <DependentUpon>sygnusportalModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="DepartamentoBD.cs" />
     <Compile Include="Departamento_List_Result.cs">
       <DependentUpon>sygnusportalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Empresa.cs">
       <DependentUpon>sygnusportalModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="EmpresaBD.cs" />
     <Compile Include="Empresa_List_Result.cs">
       <DependentUpon>sygnusportalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Pagaduria.cs">
       <DependentUpon>sygnusportalModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="PagaduriaBD.cs" />
     <Compile Include="Pagaduria_ListActivasPeriodos_Result.cs">
       <DependentUpon>sygnusportalModel.tt</DependentUpon>
     </Compile>
@@ -80,6 +84,7 @@
     <Compile Include="Pais.cs">
       <DependentUpon>sygnusportalModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="PaisBD.cs" />
     <Compile Include="Pais_List_Result.cs">
       <DependentUpon>sygnusportalModel.tt</DependentUpon>
     </Compile>
@@ -108,6 +113,7 @@
     <Compile Include="TipoPagaduria.cs">
       <DependentUpon>sygnusportalModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="TipopagaduriaBD.cs" />
     <Compile Include="Tipopagaduria_List_Result.cs">
       <DependentUpon>sygnusportalModel.tt</DependentUpon>
     </Compile>
