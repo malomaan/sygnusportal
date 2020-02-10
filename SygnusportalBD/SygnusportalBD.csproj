@@ -31,8 +31,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -41,7 +50,95 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Ciudad.cs">
+      <DependentUpon>sygnusportalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Ciudad_List_Result.cs">
+      <DependentUpon>sygnusportalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Departamento.cs">
+      <DependentUpon>sygnusportalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Departamento_List_Result.cs">
+      <DependentUpon>sygnusportalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Empresa.cs">
+      <DependentUpon>sygnusportalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Empresa_List_Result.cs">
+      <DependentUpon>sygnusportalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Pagaduria.cs">
+      <DependentUpon>sygnusportalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Pagaduria_ListActivasPeriodos_Result.cs">
+      <DependentUpon>sygnusportalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Pagaduria_List_Result.cs">
+      <DependentUpon>sygnusportalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Pais.cs">
+      <DependentUpon>sygnusportalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Pais_List_Result.cs">
+      <DependentUpon>sygnusportalModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="sygnusportalModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>sygnusportalModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sygnusportalModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>sygnusportalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sygnusportalModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>sygnusportalModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="TipoDato.cs">
+      <DependentUpon>sygnusportalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tipodato_List_Result.cs">
+      <DependentUpon>sygnusportalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TipoPagaduria.cs">
+      <DependentUpon>sygnusportalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tipopagaduria_List_Result.cs">
+      <DependentUpon>sygnusportalModel.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="sygnusportalModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>sygnusportalModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="packages.config" />
+    <None Include="sygnusportalModel.edmx.diagram">
+      <DependentUpon>sygnusportalModel.edmx</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="sygnusportalModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>sygnusportalModel.Context.cs</LastGenOutput>
+      <DependentUpon>sygnusportalModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="sygnusportalModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>sygnusportalModel.edmx</DependentUpon>
+      <LastGenOutput>sygnusportalModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

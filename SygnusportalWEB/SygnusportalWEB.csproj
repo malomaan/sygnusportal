@@ -252,6 +252,16 @@
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SygnusportalBD\SygnusportalBD.csproj">
+      <Project>{1a2d9578-6416-4483-a20a-b65246ccb822}</Project>
+      <Name>SygnusportalBD</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SygnusportalPRC\SygnusportalPRC.csproj">
+      <Project>{c1724c29-ee15-4783-9a30-7d9509144184}</Project>
+      <Name>SygnusportalPRC</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

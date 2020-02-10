@@ -1,0 +1,1035 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="sygnusportalModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Ciudad">
+          <Key>
+            <PropertyRef Name="ciu_codigo" />
+          </Key>
+          <Property Name="ciu_codigo" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="ciu_nombre" Type="varchar" MaxLength="250" />
+          <Property Name="ciu_capital" Type="bit" />
+          <Property Name="dep_codigo" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Departamento">
+          <Key>
+            <PropertyRef Name="dep_codigo" />
+          </Key>
+          <Property Name="dep_codigo" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="dep_nombre" Type="varchar" MaxLength="250" />
+          <Property Name="pai_codigo" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Empresa">
+          <Key>
+            <PropertyRef Name="emp_nit" />
+          </Key>
+          <Property Name="emp_nit" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="emp_dv" Type="int" />
+          <Property Name="emp_nombre" Type="varchar" MaxLength="250" />
+          <Property Name="emp_direccion" Type="varchar" MaxLength="250" />
+          <Property Name="ciu_codigo" Type="varchar" MaxLength="20" />
+          <Property Name="emp_telefono" Type="varchar" MaxLength="250" />
+          <Property Name="emp_logo" Type="varchar" MaxLength="250" />
+          <Property Name="emp_url" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="Pagaduria">
+          <Key>
+            <PropertyRef Name="pag_id" />
+          </Key>
+          <Property Name="pag_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="pag_codigo" Type="varchar" MaxLength="50" />
+          <Property Name="pag_nit" Type="varchar" MaxLength="50" />
+          <Property Name="pag_dv" Type="int" />
+          <Property Name="pag_nombre" Type="varchar" MaxLength="250" />
+          <Property Name="pag_direccion" Type="varchar" MaxLength="250" />
+          <Property Name="ciu_codigo" Type="varchar" MaxLength="20" />
+          <Property Name="pag_telefonos" Type="varchar" MaxLength="150" />
+          <Property Name="pag_url" Type="varchar" MaxLength="250" />
+          <Property Name="pag_mail" Type="varchar" MaxLength="250" />
+          <Property Name="pag_logo" Type="varchar" MaxLength="250" />
+          <Property Name="pag_urlsygnus" Type="varchar" MaxLength="250" />
+          <Property Name="pag_color" Type="varchar" MaxLength="250" />
+          <Property Name="tpa_id" Type="int" />
+          <Property Name="emp_nit" Type="varchar" MaxLength="50" />
+          <Property Name="ent_id" Type="int" />
+          <Property Name="pag_activa" Type="bit" />
+          <Property Name="pag_fax" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="Pais">
+          <Key>
+            <PropertyRef Name="pai_codigo" />
+          </Key>
+          <Property Name="pai_codigo" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="pai_nombre" Type="varchar" MaxLength="250" />
+          <Property Name="pai_codigointernacional" Type="varchar" MaxLength="20" />
+          <Property Name="pai_predeterminado" Type="bit" />
+        </EntityType>
+        <EntityType Name="TipoDato">
+          <Key>
+            <PropertyRef Name="tda_id" />
+          </Key>
+          <Property Name="tda_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tda_nombre" Type="varchar" MaxLength="250" />
+          <Property Name="tda_convencion" Type="varchar" MaxLength="250" />
+          <Property Name="tda_valorpredeterminado" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TipoPagaduria">
+          <Key>
+            <PropertyRef Name="tpa_id" />
+          </Key>
+          <Property Name="tpa_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tpa_descripcion" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <Association Name="FK_Ciudad_Departamento">
+          <End Role="Departamento" Type="Self.Departamento" Multiplicity="0..1" />
+          <End Role="Ciudad" Type="Self.Ciudad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departamento">
+              <PropertyRef Name="dep_codigo" />
+            </Principal>
+            <Dependent Role="Ciudad">
+              <PropertyRef Name="dep_codigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Departamento_Pais">
+          <End Role="Pais" Type="Self.Pais" Multiplicity="0..1" />
+          <End Role="Departamento" Type="Self.Departamento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pais">
+              <PropertyRef Name="pai_codigo" />
+            </Principal>
+            <Dependent Role="Departamento">
+              <PropertyRef Name="pai_codigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Empresa_Ciudad">
+          <End Role="Ciudad" Type="Self.Ciudad" Multiplicity="0..1" />
+          <End Role="Empresa" Type="Self.Empresa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ciudad">
+              <PropertyRef Name="ciu_codigo" />
+            </Principal>
+            <Dependent Role="Empresa">
+              <PropertyRef Name="ciu_codigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pagaduria_Ciudad">
+          <End Role="Ciudad" Type="Self.Ciudad" Multiplicity="0..1" />
+          <End Role="Pagaduria" Type="Self.Pagaduria" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ciudad">
+              <PropertyRef Name="ciu_codigo" />
+            </Principal>
+            <Dependent Role="Pagaduria">
+              <PropertyRef Name="ciu_codigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pagaduria_Empresa">
+          <End Role="Empresa" Type="Self.Empresa" Multiplicity="0..1" />
+          <End Role="Pagaduria" Type="Self.Pagaduria" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empresa">
+              <PropertyRef Name="emp_nit" />
+            </Principal>
+            <Dependent Role="Pagaduria">
+              <PropertyRef Name="emp_nit" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pagaduria_TipoPagaduria">
+          <End Role="TipoPagaduria" Type="Self.TipoPagaduria" Multiplicity="0..1" />
+          <End Role="Pagaduria" Type="Self.Pagaduria" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoPagaduria">
+              <PropertyRef Name="tpa_id" />
+            </Principal>
+            <Dependent Role="Pagaduria">
+              <PropertyRef Name="tpa_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="Ciudad_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ciu_codigo" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Ciudad_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ciu_codigo" Type="varchar" Mode="In" />
+          <Parameter Name="ciu_nombre" Type="varchar" Mode="In" />
+          <Parameter Name="ciu_capital" Type="bit" Mode="In" />
+          <Parameter Name="dep_codigo" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Ciudad_List" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ciu_codigo" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Ciudad_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ciu_codigo" Type="varchar" Mode="In" />
+          <Parameter Name="ciu_nombre" Type="varchar" Mode="In" />
+          <Parameter Name="ciu_capital" Type="bit" Mode="In" />
+          <Parameter Name="dep_codigo" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Departamento_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="dep_codigo" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Departamento_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="dep_codigo" Type="varchar" Mode="In" />
+          <Parameter Name="dep_nombre" Type="varchar" Mode="In" />
+          <Parameter Name="pai_codigo" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Departamento_List" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="dep_codigo" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Departamento_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="dep_codigo" Type="varchar" Mode="In" />
+          <Parameter Name="dep_nombre" Type="varchar" Mode="In" />
+          <Parameter Name="pai_codigo" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Empresa_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="emp_nit" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Empresa_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="emp_nit" Type="varchar" Mode="In" />
+          <Parameter Name="emp_dv" Type="int" Mode="In" />
+          <Parameter Name="emp_nombre" Type="varchar" Mode="In" />
+          <Parameter Name="emp_direccion" Type="varchar" Mode="In" />
+          <Parameter Name="ciu_codigo" Type="varchar" Mode="In" />
+          <Parameter Name="emp_telefono" Type="varchar" Mode="In" />
+          <Parameter Name="emp_logo" Type="varchar" Mode="In" />
+          <Parameter Name="emp_url" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Empresa_List" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="emp_nit" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Empresa_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="emp_nit" Type="varchar" Mode="In" />
+          <Parameter Name="emp_dv" Type="int" Mode="In" />
+          <Parameter Name="emp_nombre" Type="varchar" Mode="In" />
+          <Parameter Name="emp_direccion" Type="varchar" Mode="In" />
+          <Parameter Name="ciu_codigo" Type="varchar" Mode="In" />
+          <Parameter Name="emp_telefono" Type="varchar" Mode="In" />
+          <Parameter Name="emp_logo" Type="varchar" Mode="In" />
+          <Parameter Name="emp_url" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="fn_tipocampo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="varchar">
+          <Parameter Name="tipocampo" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="fn_valorcampo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="varchar">
+          <Parameter Name="tipocampo" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Pagaduria_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="pag_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Pagaduria_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="pag_codigo" Type="varchar" Mode="In" />
+          <Parameter Name="pag_nit" Type="varchar" Mode="In" />
+          <Parameter Name="pag_dv" Type="int" Mode="In" />
+          <Parameter Name="pag_nombre" Type="varchar" Mode="In" />
+          <Parameter Name="pag_direccion" Type="varchar" Mode="In" />
+          <Parameter Name="ciu_codigo" Type="varchar" Mode="In" />
+          <Parameter Name="pag_telefonos" Type="varchar" Mode="In" />
+          <Parameter Name="pag_url" Type="varchar" Mode="In" />
+          <Parameter Name="pag_mail" Type="varchar" Mode="In" />
+          <Parameter Name="pag_logo" Type="varchar" Mode="In" />
+          <Parameter Name="pag_urlsygnus" Type="varchar" Mode="In" />
+          <Parameter Name="pag_color" Type="varchar" Mode="In" />
+          <Parameter Name="tpa_id" Type="int" Mode="In" />
+          <Parameter Name="emp_nit" Type="varchar" Mode="In" />
+          <Parameter Name="ent_id" Type="int" Mode="In" />
+          <Parameter Name="pag_activa" Type="bit" Mode="In" />
+          <Parameter Name="pag_fax" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Pagaduria_List" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="pag_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Pagaduria_ListActivasPeriodos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Pagaduria_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="pag_id" Type="int" Mode="In" />
+          <Parameter Name="pag_codigo" Type="varchar" Mode="In" />
+          <Parameter Name="pag_nit" Type="varchar" Mode="In" />
+          <Parameter Name="pag_dv" Type="int" Mode="In" />
+          <Parameter Name="pag_nombre" Type="varchar" Mode="In" />
+          <Parameter Name="pag_direccion" Type="varchar" Mode="In" />
+          <Parameter Name="ciu_codigo" Type="varchar" Mode="In" />
+          <Parameter Name="pag_telefonos" Type="varchar" Mode="In" />
+          <Parameter Name="pag_url" Type="varchar" Mode="In" />
+          <Parameter Name="pag_mail" Type="varchar" Mode="In" />
+          <Parameter Name="pag_logo" Type="varchar" Mode="In" />
+          <Parameter Name="pag_urlsygnus" Type="varchar" Mode="In" />
+          <Parameter Name="pag_color" Type="varchar" Mode="In" />
+          <Parameter Name="tpa_id" Type="int" Mode="In" />
+          <Parameter Name="emp_nit" Type="varchar" Mode="In" />
+          <Parameter Name="ent_id" Type="int" Mode="In" />
+          <Parameter Name="pag_activa" Type="bit" Mode="In" />
+          <Parameter Name="pag_fax" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Pais_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="pai_codigo" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Pais_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="pai_codigo" Type="varchar" Mode="In" />
+          <Parameter Name="pai_nombre" Type="varchar" Mode="In" />
+          <Parameter Name="pai_codigointernacional" Type="varchar" Mode="In" />
+          <Parameter Name="pai_predeterminado" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="Pais_List" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="pai_codigo" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Pais_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="pai_codigo" Type="varchar" Mode="In" />
+          <Parameter Name="pai_nombre" Type="varchar" Mode="In" />
+          <Parameter Name="pai_codigointernacional" Type="varchar" Mode="In" />
+          <Parameter Name="pai_predeterminado" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="Tipodato_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tda_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Tipodato_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tda_nombre" Type="varchar" Mode="In" />
+          <Parameter Name="tda_convencion" Type="varchar" Mode="In" />
+          <Parameter Name="tda_valorpredeterminado" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Tipodato_List" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tda_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Tipodato_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tda_id" Type="int" Mode="In" />
+          <Parameter Name="tda_nombre" Type="varchar" Mode="In" />
+          <Parameter Name="tda_convencion" Type="varchar" Mode="In" />
+          <Parameter Name="tda_valorpredeterminado" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Tipopagaduria_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tpa_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Tipopagaduria_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tpa_descripcion" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Tipopagaduria_List" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tpa_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Tipopagaduria_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tpa_id" Type="int" Mode="In" />
+          <Parameter Name="tpa_descripcion" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="sygnusportalModelStoreContainer">
+          <EntitySet Name="Ciudad" EntityType="Self.Ciudad" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Departamento" EntityType="Self.Departamento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Empresa" EntityType="Self.Empresa" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pagaduria" EntityType="Self.Pagaduria" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pais" EntityType="Self.Pais" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoDato" EntityType="Self.TipoDato" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoPagaduria" EntityType="Self.TipoPagaduria" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Ciudad_Departamento" Association="Self.FK_Ciudad_Departamento">
+            <End Role="Departamento" EntitySet="Departamento" />
+            <End Role="Ciudad" EntitySet="Ciudad" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Departamento_Pais" Association="Self.FK_Departamento_Pais">
+            <End Role="Pais" EntitySet="Pais" />
+            <End Role="Departamento" EntitySet="Departamento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Empresa_Ciudad" Association="Self.FK_Empresa_Ciudad">
+            <End Role="Ciudad" EntitySet="Ciudad" />
+            <End Role="Empresa" EntitySet="Empresa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pagaduria_Ciudad" Association="Self.FK_Pagaduria_Ciudad">
+            <End Role="Ciudad" EntitySet="Ciudad" />
+            <End Role="Pagaduria" EntitySet="Pagaduria" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pagaduria_Empresa" Association="Self.FK_Pagaduria_Empresa">
+            <End Role="Empresa" EntitySet="Empresa" />
+            <End Role="Pagaduria" EntitySet="Pagaduria" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pagaduria_TipoPagaduria" Association="Self.FK_Pagaduria_TipoPagaduria">
+            <End Role="TipoPagaduria" EntitySet="TipoPagaduria" />
+            <End Role="Pagaduria" EntitySet="Pagaduria" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="sygnusportalModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Ciudad">
+          <Key>
+            <PropertyRef Name="ciu_codigo" />
+          </Key>
+          <Property Name="ciu_codigo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ciu_nombre" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="ciu_capital" Type="Boolean" />
+          <Property Name="dep_codigo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Departamento" Relationship="Self.FK_Ciudad_Departamento" FromRole="Ciudad" ToRole="Departamento" />
+          <NavigationProperty Name="Empresa" Relationship="Self.FK_Empresa_Ciudad" FromRole="Ciudad" ToRole="Empresa" />
+          <NavigationProperty Name="Pagaduria" Relationship="Self.FK_Pagaduria_Ciudad" FromRole="Ciudad" ToRole="Pagaduria" />
+        </EntityType>
+        <EntityType Name="Departamento">
+          <Key>
+            <PropertyRef Name="dep_codigo" />
+          </Key>
+          <Property Name="dep_codigo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="dep_nombre" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="pai_codigo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Ciudad" Relationship="Self.FK_Ciudad_Departamento" FromRole="Departamento" ToRole="Ciudad" />
+          <NavigationProperty Name="Pais" Relationship="Self.FK_Departamento_Pais" FromRole="Departamento" ToRole="Pais" />
+        </EntityType>
+        <EntityType Name="Empresa">
+          <Key>
+            <PropertyRef Name="emp_nit" />
+          </Key>
+          <Property Name="emp_nit" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="emp_dv" Type="Int32" />
+          <Property Name="emp_nombre" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="emp_direccion" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="ciu_codigo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="emp_telefono" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="emp_logo" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="emp_url" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Ciudad" Relationship="Self.FK_Empresa_Ciudad" FromRole="Empresa" ToRole="Ciudad" />
+          <NavigationProperty Name="Pagaduria" Relationship="Self.FK_Pagaduria_Empresa" FromRole="Empresa" ToRole="Pagaduria" />
+        </EntityType>
+        <EntityType Name="Pagaduria">
+          <Key>
+            <PropertyRef Name="pag_id" />
+          </Key>
+          <Property Name="pag_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="pag_codigo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="pag_nit" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="pag_dv" Type="Int32" />
+          <Property Name="pag_nombre" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="pag_direccion" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="ciu_codigo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="pag_telefonos" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="pag_url" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="pag_mail" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="pag_logo" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="pag_urlsygnus" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="pag_color" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="tpa_id" Type="Int32" />
+          <Property Name="emp_nit" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ent_id" Type="Int32" />
+          <Property Name="pag_activa" Type="Boolean" />
+          <Property Name="pag_fax" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Ciudad" Relationship="Self.FK_Pagaduria_Ciudad" FromRole="Pagaduria" ToRole="Ciudad" />
+          <NavigationProperty Name="Empresa" Relationship="Self.FK_Pagaduria_Empresa" FromRole="Pagaduria" ToRole="Empresa" />
+          <NavigationProperty Name="TipoPagaduria" Relationship="Self.FK_Pagaduria_TipoPagaduria" FromRole="Pagaduria" ToRole="TipoPagaduria" />
+        </EntityType>
+        <EntityType Name="Pais">
+          <Key>
+            <PropertyRef Name="pai_codigo" />
+          </Key>
+          <Property Name="pai_codigo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="pai_nombre" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="pai_codigointernacional" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="pai_predeterminado" Type="Boolean" />
+          <NavigationProperty Name="Departamento" Relationship="Self.FK_Departamento_Pais" FromRole="Pais" ToRole="Departamento" />
+        </EntityType>
+        <EntityType Name="TipoDato">
+          <Key>
+            <PropertyRef Name="tda_id" />
+          </Key>
+          <Property Name="tda_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tda_nombre" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="tda_convencion" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="tda_valorpredeterminado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TipoPagaduria">
+          <Key>
+            <PropertyRef Name="tpa_id" />
+          </Key>
+          <Property Name="tpa_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tpa_descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Pagaduria" Relationship="Self.FK_Pagaduria_TipoPagaduria" FromRole="TipoPagaduria" ToRole="Pagaduria" />
+        </EntityType>
+        <Association Name="FK_Ciudad_Departamento">
+          <End Role="Departamento" Type="Self.Departamento" Multiplicity="0..1" />
+          <End Role="Ciudad" Type="Self.Ciudad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departamento">
+              <PropertyRef Name="dep_codigo" />
+            </Principal>
+            <Dependent Role="Ciudad">
+              <PropertyRef Name="dep_codigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Empresa_Ciudad">
+          <End Role="Ciudad" Type="Self.Ciudad" Multiplicity="0..1" />
+          <End Role="Empresa" Type="Self.Empresa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ciudad">
+              <PropertyRef Name="ciu_codigo" />
+            </Principal>
+            <Dependent Role="Empresa">
+              <PropertyRef Name="ciu_codigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pagaduria_Ciudad">
+          <End Role="Ciudad" Type="Self.Ciudad" Multiplicity="0..1" />
+          <End Role="Pagaduria" Type="Self.Pagaduria" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ciudad">
+              <PropertyRef Name="ciu_codigo" />
+            </Principal>
+            <Dependent Role="Pagaduria">
+              <PropertyRef Name="ciu_codigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Departamento_Pais">
+          <End Role="Pais" Type="Self.Pais" Multiplicity="0..1" />
+          <End Role="Departamento" Type="Self.Departamento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pais">
+              <PropertyRef Name="pai_codigo" />
+            </Principal>
+            <Dependent Role="Departamento">
+              <PropertyRef Name="pai_codigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pagaduria_Empresa">
+          <End Role="Empresa" Type="Self.Empresa" Multiplicity="0..1" />
+          <End Role="Pagaduria" Type="Self.Pagaduria" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empresa">
+              <PropertyRef Name="emp_nit" />
+            </Principal>
+            <Dependent Role="Pagaduria">
+              <PropertyRef Name="emp_nit" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pagaduria_TipoPagaduria">
+          <End Role="TipoPagaduria" Type="Self.TipoPagaduria" Multiplicity="0..1" />
+          <End Role="Pagaduria" Type="Self.Pagaduria" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoPagaduria">
+              <PropertyRef Name="tpa_id" />
+            </Principal>
+            <Dependent Role="Pagaduria">
+              <PropertyRef Name="tpa_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="sygnusportalEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Ciudad" EntityType="Self.Ciudad" />
+          <EntitySet Name="Departamento" EntityType="Self.Departamento" />
+          <EntitySet Name="Empresa" EntityType="Self.Empresa" />
+          <EntitySet Name="Pagaduria" EntityType="Self.Pagaduria" />
+          <EntitySet Name="Pais" EntityType="Self.Pais" />
+          <EntitySet Name="TipoDato" EntityType="Self.TipoDato" />
+          <EntitySet Name="TipoPagaduria" EntityType="Self.TipoPagaduria" />
+          <AssociationSet Name="FK_Ciudad_Departamento" Association="Self.FK_Ciudad_Departamento">
+            <End Role="Departamento" EntitySet="Departamento" />
+            <End Role="Ciudad" EntitySet="Ciudad" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Empresa_Ciudad" Association="Self.FK_Empresa_Ciudad">
+            <End Role="Ciudad" EntitySet="Ciudad" />
+            <End Role="Empresa" EntitySet="Empresa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pagaduria_Ciudad" Association="Self.FK_Pagaduria_Ciudad">
+            <End Role="Ciudad" EntitySet="Ciudad" />
+            <End Role="Pagaduria" EntitySet="Pagaduria" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Departamento_Pais" Association="Self.FK_Departamento_Pais">
+            <End Role="Pais" EntitySet="Pais" />
+            <End Role="Departamento" EntitySet="Departamento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pagaduria_Empresa" Association="Self.FK_Pagaduria_Empresa">
+            <End Role="Empresa" EntitySet="Empresa" />
+            <End Role="Pagaduria" EntitySet="Pagaduria" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pagaduria_TipoPagaduria" Association="Self.FK_Pagaduria_TipoPagaduria">
+            <End Role="TipoPagaduria" EntitySet="TipoPagaduria" />
+            <End Role="Pagaduria" EntitySet="Pagaduria" />
+          </AssociationSet>
+          <FunctionImport Name="Ciudad_Delete">
+            <Parameter Name="ciu_codigo" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Ciudad_Insert">
+            <Parameter Name="ciu_codigo" Mode="In" Type="String" />
+            <Parameter Name="ciu_nombre" Mode="In" Type="String" />
+            <Parameter Name="ciu_capital" Mode="In" Type="Boolean" />
+            <Parameter Name="dep_codigo" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Ciudad_List" ReturnType="Collection(sygnusportalModel.Ciudad_List_Result)">
+            <Parameter Name="ciu_codigo" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Ciudad_Update">
+            <Parameter Name="ciu_codigo" Mode="In" Type="String" />
+            <Parameter Name="ciu_nombre" Mode="In" Type="String" />
+            <Parameter Name="ciu_capital" Mode="In" Type="Boolean" />
+            <Parameter Name="dep_codigo" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Departamento_Delete">
+            <Parameter Name="dep_codigo" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Departamento_Insert">
+            <Parameter Name="dep_codigo" Mode="In" Type="String" />
+            <Parameter Name="dep_nombre" Mode="In" Type="String" />
+            <Parameter Name="pai_codigo" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Departamento_List" ReturnType="Collection(sygnusportalModel.Departamento_List_Result)">
+            <Parameter Name="dep_codigo" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Departamento_Update">
+            <Parameter Name="dep_codigo" Mode="In" Type="String" />
+            <Parameter Name="dep_nombre" Mode="In" Type="String" />
+            <Parameter Name="pai_codigo" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Empresa_Delete">
+            <Parameter Name="emp_nit" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Empresa_Insert">
+            <Parameter Name="emp_nit" Mode="In" Type="String" />
+            <Parameter Name="emp_dv" Mode="In" Type="Int32" />
+            <Parameter Name="emp_nombre" Mode="In" Type="String" />
+            <Parameter Name="emp_direccion" Mode="In" Type="String" />
+            <Parameter Name="ciu_codigo" Mode="In" Type="String" />
+            <Parameter Name="emp_telefono" Mode="In" Type="String" />
+            <Parameter Name="emp_logo" Mode="In" Type="String" />
+            <Parameter Name="emp_url" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Empresa_List" ReturnType="Collection(sygnusportalModel.Empresa_List_Result)">
+            <Parameter Name="emp_nit" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Empresa_Update">
+            <Parameter Name="emp_nit" Mode="In" Type="String" />
+            <Parameter Name="emp_dv" Mode="In" Type="Int32" />
+            <Parameter Name="emp_nombre" Mode="In" Type="String" />
+            <Parameter Name="emp_direccion" Mode="In" Type="String" />
+            <Parameter Name="ciu_codigo" Mode="In" Type="String" />
+            <Parameter Name="emp_telefono" Mode="In" Type="String" />
+            <Parameter Name="emp_logo" Mode="In" Type="String" />
+            <Parameter Name="emp_url" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Pagaduria_Delete">
+            <Parameter Name="pag_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Pagaduria_Insert">
+            <Parameter Name="pag_codigo" Mode="In" Type="String" />
+            <Parameter Name="pag_nit" Mode="In" Type="String" />
+            <Parameter Name="pag_dv" Mode="In" Type="Int32" />
+            <Parameter Name="pag_nombre" Mode="In" Type="String" />
+            <Parameter Name="pag_direccion" Mode="In" Type="String" />
+            <Parameter Name="ciu_codigo" Mode="In" Type="String" />
+            <Parameter Name="pag_telefonos" Mode="In" Type="String" />
+            <Parameter Name="pag_url" Mode="In" Type="String" />
+            <Parameter Name="pag_mail" Mode="In" Type="String" />
+            <Parameter Name="pag_logo" Mode="In" Type="String" />
+            <Parameter Name="pag_urlsygnus" Mode="In" Type="String" />
+            <Parameter Name="pag_color" Mode="In" Type="String" />
+            <Parameter Name="tpa_id" Mode="In" Type="Int32" />
+            <Parameter Name="emp_nit" Mode="In" Type="String" />
+            <Parameter Name="ent_id" Mode="In" Type="Int32" />
+            <Parameter Name="pag_activa" Mode="In" Type="Boolean" />
+            <Parameter Name="pag_fax" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Pagaduria_List" ReturnType="Collection(sygnusportalModel.Pagaduria_List_Result)">
+            <Parameter Name="pag_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Pagaduria_ListActivasPeriodos" ReturnType="Collection(sygnusportalModel.Pagaduria_ListActivasPeriodos_Result)" />
+          <FunctionImport Name="Pagaduria_Update">
+            <Parameter Name="pag_id" Mode="In" Type="Int32" />
+            <Parameter Name="pag_codigo" Mode="In" Type="String" />
+            <Parameter Name="pag_nit" Mode="In" Type="String" />
+            <Parameter Name="pag_dv" Mode="In" Type="Int32" />
+            <Parameter Name="pag_nombre" Mode="In" Type="String" />
+            <Parameter Name="pag_direccion" Mode="In" Type="String" />
+            <Parameter Name="ciu_codigo" Mode="In" Type="String" />
+            <Parameter Name="pag_telefonos" Mode="In" Type="String" />
+            <Parameter Name="pag_url" Mode="In" Type="String" />
+            <Parameter Name="pag_mail" Mode="In" Type="String" />
+            <Parameter Name="pag_logo" Mode="In" Type="String" />
+            <Parameter Name="pag_urlsygnus" Mode="In" Type="String" />
+            <Parameter Name="pag_color" Mode="In" Type="String" />
+            <Parameter Name="tpa_id" Mode="In" Type="Int32" />
+            <Parameter Name="emp_nit" Mode="In" Type="String" />
+            <Parameter Name="ent_id" Mode="In" Type="Int32" />
+            <Parameter Name="pag_activa" Mode="In" Type="Boolean" />
+            <Parameter Name="pag_fax" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Pais_Delete">
+            <Parameter Name="pai_codigo" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Pais_Insert">
+            <Parameter Name="pai_codigo" Mode="In" Type="String" />
+            <Parameter Name="pai_nombre" Mode="In" Type="String" />
+            <Parameter Name="pai_codigointernacional" Mode="In" Type="String" />
+            <Parameter Name="pai_predeterminado" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="Pais_List" ReturnType="Collection(sygnusportalModel.Pais_List_Result)">
+            <Parameter Name="pai_codigo" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Pais_Update">
+            <Parameter Name="pai_codigo" Mode="In" Type="String" />
+            <Parameter Name="pai_nombre" Mode="In" Type="String" />
+            <Parameter Name="pai_codigointernacional" Mode="In" Type="String" />
+            <Parameter Name="pai_predeterminado" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="Tipodato_Delete">
+            <Parameter Name="tda_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Tipodato_Insert">
+            <Parameter Name="tda_nombre" Mode="In" Type="String" />
+            <Parameter Name="tda_convencion" Mode="In" Type="String" />
+            <Parameter Name="tda_valorpredeterminado" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Tipodato_List" ReturnType="Collection(sygnusportalModel.Tipodato_List_Result)">
+            <Parameter Name="tda_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Tipodato_Update">
+            <Parameter Name="tda_id" Mode="In" Type="Int32" />
+            <Parameter Name="tda_nombre" Mode="In" Type="String" />
+            <Parameter Name="tda_convencion" Mode="In" Type="String" />
+            <Parameter Name="tda_valorpredeterminado" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Tipopagaduria_Delete">
+            <Parameter Name="tpa_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Tipopagaduria_Insert">
+            <Parameter Name="tpa_descripcion" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Tipopagaduria_List" ReturnType="Collection(sygnusportalModel.Tipopagaduria_List_Result)">
+            <Parameter Name="tpa_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Tipopagaduria_Update">
+            <Parameter Name="tpa_id" Mode="In" Type="Int32" />
+            <Parameter Name="tpa_descripcion" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="Ciudad_List_Result">
+          <Property Type="String" Name="ciu_codigo" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="ciu_nombre" Nullable="true" MaxLength="250" />
+          <Property Type="Boolean" Name="ciu_capital" Nullable="true" />
+          <Property Type="String" Name="dep_codigo" Nullable="true" MaxLength="20" />
+        </ComplexType>
+        <ComplexType Name="Departamento_List_Result">
+          <Property Type="String" Name="dep_codigo" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="dep_nombre" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="pai_codigo" Nullable="true" MaxLength="20" />
+        </ComplexType>
+        <ComplexType Name="Empresa_List_Result">
+          <Property Type="String" Name="emp_nit" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="emp_dv" Nullable="true" />
+          <Property Type="String" Name="emp_nombre" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="emp_direccion" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="ciu_codigo" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="emp_telefono" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="emp_logo" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="emp_url" Nullable="true" MaxLength="250" />
+        </ComplexType>
+        <ComplexType Name="Pagaduria_List_Result">
+          <Property Type="Int32" Name="pag_id" Nullable="false" />
+          <Property Type="String" Name="pag_codigo" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="pag_nit" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="pag_dv" Nullable="true" />
+          <Property Type="String" Name="pag_nombre" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="pag_direccion" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="ciu_codigo" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="pag_telefonos" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="pag_url" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="pag_mail" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="pag_logo" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="pag_urlsygnus" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="pag_color" Nullable="true" MaxLength="250" />
+          <Property Type="Int32" Name="tpa_id" Nullable="true" />
+          <Property Type="String" Name="emp_nit" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="ent_id" Nullable="true" />
+          <Property Type="Boolean" Name="pag_activa" Nullable="true" />
+          <Property Type="String" Name="pag_fax" Nullable="true" MaxLength="250" />
+        </ComplexType>
+        <ComplexType Name="Pagaduria_ListActivasPeriodos_Result">
+          <Property Type="String" Name="pag_nit" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="pag_dv" Nullable="true" />
+          <Property Type="String" Name="pag_nombre" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="pag_direccion" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="ciu_codigo" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="pag_telefonos" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="pag_fax" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="pag_mail" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="pag_logo" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="pag_url" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="pag_urlsygnus" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="emp_nit" Nullable="true" MaxLength="50" />
+          <Property Type="Boolean" Name="pag_activa" Nullable="true" />
+          <Property Type="Int32" Name="tpa_id" Nullable="true" />
+          <Property Type="String" Name="pag_color" Nullable="true" MaxLength="250" />
+          <Property Type="Int32" Name="ent_id" Nullable="true" />
+          <Property Type="Int32" Name="Expr1" Nullable="true" />
+          <Property Type="Int32" Name="cano_id" Nullable="true" />
+          <Property Type="String" Name="cano_descripcion" Nullable="true" MaxLength="250" />
+          <Property Type="DateTime" Name="cano_fechainicio" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="cano_fechafinal" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="cano_fechapriorizados" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="Pais_List_Result">
+          <Property Type="String" Name="pai_codigo" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="pai_nombre" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="pai_codigointernacional" Nullable="true" MaxLength="20" />
+          <Property Type="Boolean" Name="pai_predeterminado" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Tipodato_List_Result">
+          <Property Type="Int32" Name="tda_id" Nullable="false" />
+          <Property Type="String" Name="tda_nombre" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="tda_convencion" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="tda_valorpredeterminado" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Tipopagaduria_List_Result">
+          <Property Type="Int32" Name="tpa_id" Nullable="false" />
+          <Property Type="String" Name="tpa_descripcion" Nullable="true" MaxLength="250" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="sygnusportalModelStoreContainer" CdmEntityContainer="sygnusportalEntities">
+          <EntitySetMapping Name="Ciudad">
+            <EntityTypeMapping TypeName="sygnusportalModel.Ciudad">
+              <MappingFragment StoreEntitySet="Ciudad">
+                <ScalarProperty Name="ciu_codigo" ColumnName="ciu_codigo" />
+                <ScalarProperty Name="ciu_nombre" ColumnName="ciu_nombre" />
+                <ScalarProperty Name="ciu_capital" ColumnName="ciu_capital" />
+                <ScalarProperty Name="dep_codigo" ColumnName="dep_codigo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Departamento">
+            <EntityTypeMapping TypeName="sygnusportalModel.Departamento">
+              <MappingFragment StoreEntitySet="Departamento">
+                <ScalarProperty Name="dep_codigo" ColumnName="dep_codigo" />
+                <ScalarProperty Name="dep_nombre" ColumnName="dep_nombre" />
+                <ScalarProperty Name="pai_codigo" ColumnName="pai_codigo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Empresa">
+            <EntityTypeMapping TypeName="sygnusportalModel.Empresa">
+              <MappingFragment StoreEntitySet="Empresa">
+                <ScalarProperty Name="emp_nit" ColumnName="emp_nit" />
+                <ScalarProperty Name="emp_dv" ColumnName="emp_dv" />
+                <ScalarProperty Name="emp_nombre" ColumnName="emp_nombre" />
+                <ScalarProperty Name="emp_direccion" ColumnName="emp_direccion" />
+                <ScalarProperty Name="ciu_codigo" ColumnName="ciu_codigo" />
+                <ScalarProperty Name="emp_telefono" ColumnName="emp_telefono" />
+                <ScalarProperty Name="emp_logo" ColumnName="emp_logo" />
+                <ScalarProperty Name="emp_url" ColumnName="emp_url" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pagaduria">
+            <EntityTypeMapping TypeName="sygnusportalModel.Pagaduria">
+              <MappingFragment StoreEntitySet="Pagaduria">
+                <ScalarProperty Name="pag_id" ColumnName="pag_id" />
+                <ScalarProperty Name="pag_codigo" ColumnName="pag_codigo" />
+                <ScalarProperty Name="pag_nit" ColumnName="pag_nit" />
+                <ScalarProperty Name="pag_dv" ColumnName="pag_dv" />
+                <ScalarProperty Name="pag_nombre" ColumnName="pag_nombre" />
+                <ScalarProperty Name="pag_direccion" ColumnName="pag_direccion" />
+                <ScalarProperty Name="ciu_codigo" ColumnName="ciu_codigo" />
+                <ScalarProperty Name="pag_telefonos" ColumnName="pag_telefonos" />
+                <ScalarProperty Name="pag_url" ColumnName="pag_url" />
+                <ScalarProperty Name="pag_mail" ColumnName="pag_mail" />
+                <ScalarProperty Name="pag_logo" ColumnName="pag_logo" />
+                <ScalarProperty Name="pag_urlsygnus" ColumnName="pag_urlsygnus" />
+                <ScalarProperty Name="pag_color" ColumnName="pag_color" />
+                <ScalarProperty Name="tpa_id" ColumnName="tpa_id" />
+                <ScalarProperty Name="emp_nit" ColumnName="emp_nit" />
+                <ScalarProperty Name="ent_id" ColumnName="ent_id" />
+                <ScalarProperty Name="pag_activa" ColumnName="pag_activa" />
+                <ScalarProperty Name="pag_fax" ColumnName="pag_fax" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pais">
+            <EntityTypeMapping TypeName="sygnusportalModel.Pais">
+              <MappingFragment StoreEntitySet="Pais">
+                <ScalarProperty Name="pai_codigo" ColumnName="pai_codigo" />
+                <ScalarProperty Name="pai_nombre" ColumnName="pai_nombre" />
+                <ScalarProperty Name="pai_codigointernacional" ColumnName="pai_codigointernacional" />
+                <ScalarProperty Name="pai_predeterminado" ColumnName="pai_predeterminado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoDato">
+            <EntityTypeMapping TypeName="sygnusportalModel.TipoDato">
+              <MappingFragment StoreEntitySet="TipoDato">
+                <ScalarProperty Name="tda_id" ColumnName="tda_id" />
+                <ScalarProperty Name="tda_nombre" ColumnName="tda_nombre" />
+                <ScalarProperty Name="tda_convencion" ColumnName="tda_convencion" />
+                <ScalarProperty Name="tda_valorpredeterminado" ColumnName="tda_valorpredeterminado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoPagaduria">
+            <EntityTypeMapping TypeName="sygnusportalModel.TipoPagaduria">
+              <MappingFragment StoreEntitySet="TipoPagaduria">
+                <ScalarProperty Name="tpa_id" ColumnName="tpa_id" />
+                <ScalarProperty Name="tpa_descripcion" ColumnName="tpa_descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="Ciudad_Delete" FunctionName="sygnusportalModel.Store.Ciudad_Delete" />
+          <FunctionImportMapping FunctionImportName="Ciudad_Insert" FunctionName="sygnusportalModel.Store.Ciudad_Insert" />
+          <FunctionImportMapping FunctionImportName="Ciudad_List" FunctionName="sygnusportalModel.Store.Ciudad_List">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="sygnusportalModel.Ciudad_List_Result">
+                <ScalarProperty Name="ciu_codigo" ColumnName="ciu_codigo" />
+                <ScalarProperty Name="ciu_nombre" ColumnName="ciu_nombre" />
+                <ScalarProperty Name="ciu_capital" ColumnName="ciu_capital" />
+                <ScalarProperty Name="dep_codigo" ColumnName="dep_codigo" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Ciudad_Update" FunctionName="sygnusportalModel.Store.Ciudad_Update" />
+          <FunctionImportMapping FunctionImportName="Departamento_Delete" FunctionName="sygnusportalModel.Store.Departamento_Delete" />
+          <FunctionImportMapping FunctionImportName="Departamento_Insert" FunctionName="sygnusportalModel.Store.Departamento_Insert" />
+          <FunctionImportMapping FunctionImportName="Departamento_List" FunctionName="sygnusportalModel.Store.Departamento_List">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="sygnusportalModel.Departamento_List_Result">
+                <ScalarProperty Name="dep_codigo" ColumnName="dep_codigo" />
+                <ScalarProperty Name="dep_nombre" ColumnName="dep_nombre" />
+                <ScalarProperty Name="pai_codigo" ColumnName="pai_codigo" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Departamento_Update" FunctionName="sygnusportalModel.Store.Departamento_Update" />
+          <FunctionImportMapping FunctionImportName="Empresa_Delete" FunctionName="sygnusportalModel.Store.Empresa_Delete" />
+          <FunctionImportMapping FunctionImportName="Empresa_Insert" FunctionName="sygnusportalModel.Store.Empresa_Insert" />
+          <FunctionImportMapping FunctionImportName="Empresa_List" FunctionName="sygnusportalModel.Store.Empresa_List">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="sygnusportalModel.Empresa_List_Result">
+                <ScalarProperty Name="emp_nit" ColumnName="emp_nit" />
+                <ScalarProperty Name="emp_dv" ColumnName="emp_dv" />
+                <ScalarProperty Name="emp_nombre" ColumnName="emp_nombre" />
+                <ScalarProperty Name="emp_direccion" ColumnName="emp_direccion" />
+                <ScalarProperty Name="ciu_codigo" ColumnName="ciu_codigo" />
+                <ScalarProperty Name="emp_telefono" ColumnName="emp_telefono" />
+                <ScalarProperty Name="emp_logo" ColumnName="emp_logo" />
+                <ScalarProperty Name="emp_url" ColumnName="emp_url" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Empresa_Update" FunctionName="sygnusportalModel.Store.Empresa_Update" />
+          <FunctionImportMapping FunctionImportName="Pagaduria_Delete" FunctionName="sygnusportalModel.Store.Pagaduria_Delete" />
+          <FunctionImportMapping FunctionImportName="Pagaduria_Insert" FunctionName="sygnusportalModel.Store.Pagaduria_Insert" />
+          <FunctionImportMapping FunctionImportName="Pagaduria_List" FunctionName="sygnusportalModel.Store.Pagaduria_List">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="sygnusportalModel.Pagaduria_List_Result">
+                <ScalarProperty Name="pag_id" ColumnName="pag_id" />
+                <ScalarProperty Name="pag_codigo" ColumnName="pag_codigo" />
+                <ScalarProperty Name="pag_nit" ColumnName="pag_nit" />
+                <ScalarProperty Name="pag_dv" ColumnName="pag_dv" />
+                <ScalarProperty Name="pag_nombre" ColumnName="pag_nombre" />
+                <ScalarProperty Name="pag_direccion" ColumnName="pag_direccion" />
+                <ScalarProperty Name="ciu_codigo" ColumnName="ciu_codigo" />
+                <ScalarProperty Name="pag_telefonos" ColumnName="pag_telefonos" />
+                <ScalarProperty Name="pag_url" ColumnName="pag_url" />
+                <ScalarProperty Name="pag_mail" ColumnName="pag_mail" />
+                <ScalarProperty Name="pag_logo" ColumnName="pag_logo" />
+                <ScalarProperty Name="pag_urlsygnus" ColumnName="pag_urlsygnus" />
+                <ScalarProperty Name="pag_color" ColumnName="pag_color" />
+                <ScalarProperty Name="tpa_id" ColumnName="tpa_id" />
+                <ScalarProperty Name="emp_nit" ColumnName="emp_nit" />
+                <ScalarProperty Name="ent_id" ColumnName="ent_id" />
+                <ScalarProperty Name="pag_activa" ColumnName="pag_activa" />
+                <ScalarProperty Name="pag_fax" ColumnName="pag_fax" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Pagaduria_ListActivasPeriodos" FunctionName="sygnusportalModel.Store.Pagaduria_ListActivasPeriodos">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="sygnusportalModel.Pagaduria_ListActivasPeriodos_Result">
+                <ScalarProperty Name="pag_nit" ColumnName="pag_nit" />
+                <ScalarProperty Name="pag_dv" ColumnName="pag_dv" />
+                <ScalarProperty Name="pag_nombre" ColumnName="pag_nombre" />
+                <ScalarProperty Name="pag_direccion" ColumnName="pag_direccion" />
+                <ScalarProperty Name="ciu_codigo" ColumnName="ciu_codigo" />
+                <ScalarProperty Name="pag_telefonos" ColumnName="pag_telefonos" />
+                <ScalarProperty Name="pag_fax" ColumnName="pag_fax" />
+                <ScalarProperty Name="pag_mail" ColumnName="pag_mail" />
+                <ScalarProperty Name="pag_logo" ColumnName="pag_logo" />
+                <ScalarProperty Name="pag_url" ColumnName="pag_url" />
+                <ScalarProperty Name="pag_urlsygnus" ColumnName="pag_urlsygnus" />
+                <ScalarProperty Name="emp_nit" ColumnName="emp_nit" />
+                <ScalarProperty Name="pag_activa" ColumnName="pag_activa" />
+                <ScalarProperty Name="tpa_id" ColumnName="tpa_id" />
+                <ScalarProperty Name="pag_color" ColumnName="pag_color" />
+                <ScalarProperty Name="ent_id" ColumnName="ent_id" />
+                <ScalarProperty Name="Expr1" ColumnName="Expr1" />
+                <ScalarProperty Name="cano_id" ColumnName="cano_id" />
+                <ScalarProperty Name="cano_descripcion" ColumnName="cano_descripcion" />
+                <ScalarProperty Name="cano_fechainicio" ColumnName="cano_fechainicio" />
+                <ScalarProperty Name="cano_fechafinal" ColumnName="cano_fechafinal" />
+                <ScalarProperty Name="cano_fechapriorizados" ColumnName="cano_fechapriorizados" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Pagaduria_Update" FunctionName="sygnusportalModel.Store.Pagaduria_Update" />
+          <FunctionImportMapping FunctionImportName="Pais_Delete" FunctionName="sygnusportalModel.Store.Pais_Delete" />
+          <FunctionImportMapping FunctionImportName="Pais_Insert" FunctionName="sygnusportalModel.Store.Pais_Insert" />
+          <FunctionImportMapping FunctionImportName="Pais_List" FunctionName="sygnusportalModel.Store.Pais_List">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="sygnusportalModel.Pais_List_Result">
+                <ScalarProperty Name="pai_codigo" ColumnName="pai_codigo" />
+                <ScalarProperty Name="pai_nombre" ColumnName="pai_nombre" />
+                <ScalarProperty Name="pai_codigointernacional" ColumnName="pai_codigointernacional" />
+                <ScalarProperty Name="pai_predeterminado" ColumnName="pai_predeterminado" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Pais_Update" FunctionName="sygnusportalModel.Store.Pais_Update" />
+          <FunctionImportMapping FunctionImportName="Tipodato_Delete" FunctionName="sygnusportalModel.Store.Tipodato_Delete" />
+          <FunctionImportMapping FunctionImportName="Tipodato_Insert" FunctionName="sygnusportalModel.Store.Tipodato_Insert" />
+          <FunctionImportMapping FunctionImportName="Tipodato_List" FunctionName="sygnusportalModel.Store.Tipodato_List">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="sygnusportalModel.Tipodato_List_Result">
+                <ScalarProperty Name="tda_id" ColumnName="tda_id" />
+                <ScalarProperty Name="tda_nombre" ColumnName="tda_nombre" />
+                <ScalarProperty Name="tda_convencion" ColumnName="tda_convencion" />
+                <ScalarProperty Name="tda_valorpredeterminado" ColumnName="tda_valorpredeterminado" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Tipodato_Update" FunctionName="sygnusportalModel.Store.Tipodato_Update" />
+          <FunctionImportMapping FunctionImportName="Tipopagaduria_Delete" FunctionName="sygnusportalModel.Store.Tipopagaduria_Delete" />
+          <FunctionImportMapping FunctionImportName="Tipopagaduria_Insert" FunctionName="sygnusportalModel.Store.Tipopagaduria_Insert" />
+          <FunctionImportMapping FunctionImportName="Tipopagaduria_List" FunctionName="sygnusportalModel.Store.Tipopagaduria_List">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="sygnusportalModel.Tipopagaduria_List_Result">
+                <ScalarProperty Name="tpa_id" ColumnName="tpa_id" />
+                <ScalarProperty Name="tpa_descripcion" ColumnName="tpa_descripcion" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Tipopagaduria_Update" FunctionName="sygnusportalModel.Store.Tipopagaduria_Update" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
