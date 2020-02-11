@@ -50,3 +50,9 @@ textarea {
     border-bottom-left-radius: 3px;
     text-align: center;
 }
+
+.nav-tabs {
+    /*border-bottom: 1px solid #ddd;
+    border-bottom-width: 0px;*/
+    font-family: 'Cairo', sans-serif;
+}

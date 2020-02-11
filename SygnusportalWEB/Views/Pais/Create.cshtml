@@ -4,19 +4,18 @@
     ViewBag.Title = "Create";
 }
 <p>
-
+        <h1>Paises</h1>
 </p>
 <ul class="nav nav-tabs">
-    <li><a href="@Url.Action("Index")">Paises</a></li>
-    <li class="active"><a href="@Url.Action("Create")">Nuevo</a></li>
+    <li><a href="@Url.Action("Index")"><i class="far fa-list-alt"></i> Paises</a></li>
+    <li class="active"><a href="@Url.Action("Create")"><i class="far fa-file"></i> Nuevo</a></li>
 </ul>
-<div class="panel-group">
-    <div class="panel panel-success">
-        <div class="panel-body">
-            @using (Html.BeginForm())
-            {
-                @Html.AntiForgeryToken()
-
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="panel-group">
+        <div class="panel panel-success">
+            <div class="panel-body">
                 <div class="form-horizontal">
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                     <div class="form-group">
@@ -53,26 +52,26 @@
                         </div>
                     </div>
                 </div>
-            }
+            </div>
+            <div class="panel-footer">
+                @if (ViewBag.Err != null)
+                {
+                    <div class="alert alert-danger">@ViewBag.Err</div>
+                }
+                <button type="submit" id="btnSubmit" class="btn btn-info btn-sm">
+                    <span class="glyphicon glyphicon-ok"></span> Guardar
+                </button>
+                <a class='btn btn-danger btn-sm' href="@Url.Action("Index")">
+                    <span class="glyphicon glyphicon-remove"></span> Cancelar
+                </a>
+
+            </div>
+
         </div>
-        <div class="panel-footer">
-            @if (ViewBag.Err != null)
-            {
-                <div class="alert alert-danger">@ViewBag.Err</div>
-            }
-
-            <button type="submit" id="btnSubmit" class="btn btn-info btn-sm">
-                <span class="glyphicon glyphicon-ok"></span> Guardar
-            </button>
-            <a class='btn btn-danger btn-sm' href="@Url.Action("Index")">
-                <span class="glyphicon glyphicon-remove"></span> Cancelar
-            </a>
-
-        </div>            @section Scripts {
-            @Scripts.Render("~/bundles/jqueryval")
-        }
-
     </div>
-</div>
+}
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }
 
 
