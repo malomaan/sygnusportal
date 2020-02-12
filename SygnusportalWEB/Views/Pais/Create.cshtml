@@ -16,6 +16,11 @@
     <div class="panel-group">
         <div class="panel panel-success">
             <div class="panel-body">
+                @if (ViewBag.Err != null)
+                {
+                    <div class="alert alert-danger">@ViewBag.Err</div>
+                }
+
                 <div class="form-horizontal">
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                     <div class="form-group">
@@ -52,13 +57,10 @@
                         </div>
                     </div>
                 </div>
+
             </div>
             <div class="panel-footer">
-                @if (ViewBag.Err != null)
-                {
-                    <div class="alert alert-danger">@ViewBag.Err</div>
-                }
-                <button type="submit" id="btnSubmit" class="btn btn-info btn-sm">
+                <button type="submit" id="btnSubmit" class="btn btn-success btn-sm">
                     <span class="glyphicon glyphicon-ok"></span> Guardar
                 </button>
                 <a class='btn btn-danger btn-sm' href="@Url.Action("Index")">

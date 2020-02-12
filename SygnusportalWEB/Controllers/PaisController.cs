@@ -48,11 +48,18 @@ namespace SygnusportalWEB.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "pai_codigo,pai_nombre,pai_codigointernacional,pai_predeterminado")] Pais pais)
         {
-            if (ModelState.IsValid)
+            try
             {
-                db.Pais.Add(pais);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    db.Pais.Add(pais);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+            }
+            catch (Exception Ex)
+            {
+                ViewBag.Err = "Se ha generado un ERROR al intentar realizar la acción";
             }
 
             return View(pais);

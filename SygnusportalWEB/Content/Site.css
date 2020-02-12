@@ -8,6 +8,7 @@
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
+    font-family: 'Cairo', sans-serif;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -89,4 +90,80 @@ textarea {
     padding: 15px;
     border-top: 1px solid #e5e5e5;
     text-align: right;
+}
+
+/*DL*/
+
+dl {
+    border: 1px solid #bdc8ca;
+    background-color: #f7fafa;
+}
+
+dt,
+dd {
+    box-sizing: border-box;
+    padding: 10px;
+}
+
+    dd ~ dt,
+    dd ~ dd {
+        border-top: 1px solid #bdc8ca;
+    }
+
+dt {
+    float: left;
+    padding-bottom: 0;
+    font-size: 12px;
+    font-weight: normal;
+}
+
+dd {
+    border-left: 1px dotted #bdc8ca;
+    background-color: #fff;
+}
+
+.dl-horizontal dd {
+    margin-left: 160px;
+}
+
+
+
+.tuclase {
+    text-align: left;
+    font-family: Arial Black;
+    font-weight: bold;
+    font-size: 30px;
+    color: #fff;
+    text-shadow: 0 1px 0 #ddd, 0 2px 0 #ccc, 0 3px 0 #bbb, 0 4px 0 #aaa, 0 5px 0 #acacac, 0 6px 1px rgba(0,0,0,0.1), 0 0 5px rgba(0,0,0,0.1), 0 1px 3px rgba(0,0,0,0.3), 0 3px 5px rgba(0,0,0,0.2), 0 5px 10px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.2), 0 20px 20px rgba(0,0,0,0.15);
+}
+
+.tuclase1 {
+    text-align: left;
+    font-family: Arial Black;
+    font-weight: bold;
+    font-size: 30px;
+    background: #202020;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0px 3px 3px rgba(255,255,255,0.4),0px -1px 1px rgba(0,0,0,0.3);
+}
+
+.tuclase2 {
+    text-align: left;
+    font-family: Arial;
+    font-size: 30px;
+    COLOR: #1278BF;
+    text-shadow: 0px 0px 9px #508AD3;
+}
+
+.tuclase3 {
+    text-align: left;
+    font-family: Comic Sans MS;
+    font-weight: bold;
+    font-size: 30px;
+    color: #EBD758;
+    text-shadow: -1px 0 #414D68, 0 1px #414D68, 1px 0 #414D68, 0 -1px #414D68, -2px 2px 0 #414D68, 2px 2px 0 #414D68, 1px 1px #414D68, 2px 2px #414D68, 3px 3px #414D68, 4px 4px #414D68, 5px 5px #414D68;
+    6px 6px #414D68, 7px 7px #414D68, 8px 8px #414D68, 9px 9px #414D68;
 }

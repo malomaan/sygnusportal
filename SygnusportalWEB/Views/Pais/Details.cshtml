@@ -1,42 +1,65 @@
 ﻿@model SygnusportalBD.Pais
 
+
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Paises";
 }
 
-<h2>Details</h2>
-
-<div>
-    <h4>Pais</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.pai_nombre)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.pai_nombre)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.pai_codigointernacional)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.pai_codigointernacional)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.pai_predeterminado)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.pai_predeterminado)
-        </dd>
-
-    </dl>
-</div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.pai_codigo }) |
-    @Html.ActionLink("Back to List", "Index")
+    <h1>Paises</h1>
 </p>
+<ul class="nav nav-tabs">
+    <li><a href="@Url.Action("Index")"><i class="far fa-list-alt"></i> Paises</a></li>
+    <li class="active"><a href="@Url.Action("Create")"><i class="far fa-file"></i> Detalles</a></li>
+</ul>
+
+<div class="panel-group">
+    <div class="panel panel-success">
+        <div class="panel-body">
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.pai_nombre)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.pai_nombre)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.pai_codigointernacional)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.pai_codigointernacional)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.pai_predeterminado)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.pai_predeterminado)
+                </dd>
+
+            </dl>
+
+        </div>
+        <div class="panel-footer">
+            @if (ViewBag.Err != null)
+            {
+                <div class="alert alert-danger">@ViewBag.Err</div>
+            }
+
+            <a class='btn btn-success btn-sm' href="@Url.Action("Edit", "Pais", new { id = Model.pai_codigo })">
+                <span class="glyphicon glyphicon-edit"></span> Editar
+            </a>
+
+            <a class='btn btn-danger btn-sm' href="@Url.Action("Index")">
+                <span class="glyphicon glyphicon-remove"></span> Cancelar
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
