@@ -167,3 +167,25 @@ dd {
     text-shadow: -1px 0 #414D68, 0 1px #414D68, 1px 0 #414D68, 0 -1px #414D68, -2px 2px 0 #414D68, 2px 2px 0 #414D68, 1px 1px #414D68, 2px 2px #414D68, 3px 3px #414D68, 4px 4px #414D68, 5px 5px #414D68;
     6px 6px #414D68, 7px 7px #414D68, 8px 8px #414D68, 9px 9px #414D68;
 }
+
+/*Loading o Cargando*/
+.centrado {
+    margin-top: 120px;
+    margin-left: 40%;
+    background-color: white;
+    width: 200px;
+    height: 150px;
+    border-radius: .5em;
+    border-color: #2664b9;
+    border-style: solid;
+}
+/*Validación de Formulario de Errores*/
+.validation-summary-errors {
+    padding: 5px;
+    background-color: #f4f5e8;
+    color: #a94442;
+    margin-bottom: 15px;
+    border-radius: .5em;
+    font-size: 14px;
+    border-color: red;
+}

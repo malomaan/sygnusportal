@@ -1,4 +1,4 @@
-﻿@model SygnusportalBD.Pais
+﻿@model SygnusportalBD.Ciudad
 
 @{
     ViewBag.Title = "Delete";
@@ -8,31 +8,31 @@
 
 <h3>Are you sure you want to delete this?</h3>
 <div>
-    <h4>Pais</h4>
+    <h4>Ciudad</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.pai_nombre)
+            @Html.DisplayNameFor(model => model.ciu_nombre)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.pai_nombre)
+            @Html.DisplayFor(model => model.ciu_nombre)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.pai_codigointernacional)
+            @Html.DisplayNameFor(model => model.ciu_capital)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.pai_codigointernacional)
+            @Html.DisplayFor(model => model.ciu_capital)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.pai_predeterminado)
+            @Html.DisplayNameFor(model => model.Departamento.dep_nombre)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.pai_predeterminado)
+            @Html.DisplayFor(model => model.Departamento.dep_nombre)
         </dd>
 
     </dl>

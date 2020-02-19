@@ -10,107 +10,112 @@ using SygnusportalBD;
 
 namespace SygnusportalWEB.Controllers
 {
-    public class PaisController : Controller
+    public class CiudadsController : Controller
     {
         private sygnusportalEntities db = new sygnusportalEntities();
 
-        // GET: Pais
+        // GET: Ciudads
         public ActionResult Index()
         {
-            return View(db.Pais.ToList());
+            var ciudad = db.Ciudad.Include(c => c.Departamento);
+            return View(ciudad.ToList());
         }
 
-        // GET: Pais/Details/5
+        // GET: Ciudads/Details/5
         public ActionResult Details(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Pais pais = db.Pais.Find(id);
-            if (pais == null)
+            Ciudad ciudad = db.Ciudad.Find(id);
+            if (ciudad == null)
             {
                 return HttpNotFound();
             }
-            return View(pais);
+            return View(ciudad);
         }
 
-        // GET: Pais/Create
+        // GET: Ciudads/Create
         public ActionResult Create()
         {
+            ViewBag.dep_codigo = new SelectList(db.Departamento, "dep_codigo", "dep_nombre");
             return View();
         }
 
-        // POST: Pais/Create
+        // POST: Ciudads/Create
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "pai_codigo,pai_nombre,pai_codigointernacional,pai_predeterminado")] Pais pais)
+        public ActionResult Create([Bind(Include = "ciu_codigo,ciu_nombre,ciu_capital,dep_codigo")] Ciudad ciudad)
         {
             if (ModelState.IsValid)
             {
-                db.Pais.Add(pais);
+                db.Ciudad.Add(ciudad);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(pais);
+            ViewBag.dep_codigo = new SelectList(db.Departamento, "dep_codigo", "dep_nombre", ciudad.dep_codigo);
+            return View(ciudad);
         }
 
-        // GET: Pais/Edit/5
+        // GET: Ciudads/Edit/5
         public ActionResult Edit(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Pais pais = db.Pais.Find(id);
-            if (pais == null)
+            Ciudad ciudad = db.Ciudad.Find(id);
+            if (ciudad == null)
             {
                 return HttpNotFound();
             }
-            return View(pais);
+            ViewBag.dep_codigo = new SelectList(db.Departamento, "dep_codigo", "dep_nombre", ciudad.dep_codigo);
+            return View(ciudad);
         }
 
-        // POST: Pais/Edit/5
+        // POST: Ciudads/Edit/5
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "pai_codigo,pai_nombre,pai_codigointernacional,pai_predeterminado")] Pais pais)
+        public ActionResult Edit([Bind(Include = "ciu_codigo,ciu_nombre,ciu_capital,dep_codigo")] Ciudad ciudad)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(pais).State = EntityState.Modified;
+                db.Entry(ciudad).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(pais);
+            ViewBag.dep_codigo = new SelectList(db.Departamento, "dep_codigo", "dep_nombre", ciudad.dep_codigo);
+            return View(ciudad);
         }
 
-        // GET: Pais/Delete/5
+        // GET: Ciudads/Delete/5
         public ActionResult Delete(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Pais pais = db.Pais.Find(id);
-            if (pais == null)
+            Ciudad ciudad = db.Ciudad.Find(id);
+            if (ciudad == null)
             {
                 return HttpNotFound();
             }
-            return View(pais);
+            return View(ciudad);
         }
 
-        // POST: Pais/Delete/5
+        // POST: Ciudads/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            Pais pais = db.Pais.Find(id);
-            db.Pais.Remove(pais);
+            Ciudad ciudad = db.Ciudad.Find(id);
+            db.Ciudad.Remove(ciudad);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
