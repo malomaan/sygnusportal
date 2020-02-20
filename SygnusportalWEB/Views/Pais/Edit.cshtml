@@ -4,15 +4,30 @@
     ViewBag.Title = "Edit";
 }
 
-<h2>Edit</h2>
+<h2>Pais Edit</h2>
+<ul class="nav nav-tabs">
+    <li><a href="@Url.Action("Index")"><i class="far fa-list-alt"></i> Pais</a></li>
+    <li class="active"><a href="@Url.Action("Edit",new { id = Model.pai_codigo })"><i class="far fa-file"></i> Editar</a></li>
+</ul>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+    <div class="panel-group">
+        <div class="panel panel-success">
+            <div class="panel-body">
+                <div id="divLoader" class="modal fade in Loading" role="dialog" style="display:none;">
+                    <center class="centrado">
+                        <h2>Procesando..</h2>
+                        <p></p>
+                        <img src="~/Content/Imagenes/Loading.gif" alt="Loader" />
+                    </center>
+                </div>
+                @if (ViewBag.Err != null)
+                {
+                    <div class="alert alert-danger">@ViewBag.Err</div>
+                }
     <div class="form-horizontal">
-        <h4>Pais</h4>
-        <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.pai_codigo)
 
@@ -42,14 +57,32 @@
             </div>
         </div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+    </div>
+                </div>
+            <div class="panel-footer">
+                <button type="submit" id="btnSubmit" class="btn btn-success btn-sm">
+                    <span class="glyphicon glyphicon-ok"></span> Guardar
+                </button>
+                <a class='btn btn-danger btn-sm' href="@Url.Action("Index")">
+                    <span class="glyphicon glyphicon-remove"></span> Cancelar
+                </a>
+
             </div>
         </div>
     </div>
+
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/datatables")
+    <script type="text/javascript">
+        $("#pai_codigo").focus();
+
+        $("#btnSubmit").click(function () {
+            $("#divLoader").show();
+        });
+    </script>
+
+}

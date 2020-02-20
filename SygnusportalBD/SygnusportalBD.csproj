@@ -62,6 +62,7 @@
       <DependentUpon>sygnusportalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DepartamentoBD.cs" />
+    <Compile Include="DepartamentoMetadata.cs" />
     <Compile Include="Departamento_List_Result.cs">
       <DependentUpon>sygnusportalModel.tt</DependentUpon>
     </Compile>
