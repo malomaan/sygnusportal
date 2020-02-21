@@ -29,7 +29,7 @@
                     <div class="alert alert-danger">@ViewBag.Err</div>
                 }
     <div class="form-horizontal">
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.ValidationSummary("", new { @class = "text-danger" })
         <div class="form-group">
             @Html.LabelFor(model => model.tpa_descripcion, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -62,7 +62,7 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/datatables")
     <script type="text/javascript">
-        $("#tpa_id").focus();
+        $("#tpa_descripcion").focus();
 
         $("#btnSubmit").click(function () {
             $("#divLoader").show();

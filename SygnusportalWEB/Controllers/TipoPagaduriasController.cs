@@ -50,6 +50,7 @@ namespace SygnusportalWEB.Controllers
         {
             if (ModelState.IsValid)
             {
+
                 try
                 {
                     db.TipoPagaduria.Add(tipoPagaduria);

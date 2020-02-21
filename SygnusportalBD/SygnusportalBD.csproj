@@ -117,6 +117,7 @@
       <DependentUpon>sygnusportalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="TipopagaduriaBD.cs" />
+    <Compile Include="TipoPagaduriaMetadata.cs" />
     <Compile Include="Tipopagaduria_List_Result.cs">
       <DependentUpon>sygnusportalModel.tt</DependentUpon>
     </Compile>
