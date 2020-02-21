@@ -1,0 +1,128 @@
+﻿@model SygnusportalBD.Empresa
+
+@{
+    ViewBag.Title = "Empresa Create";
+}
+
+<p>
+        <h2>Empresa Create</h2>
+</p>
+<ul class="nav nav-tabs">
+    <li><a href="@Url.Action("Index")"><i class="far fa-list-alt"></i> Empresa</a></li>
+    <li class="active"><a href="@Url.Action("Create")"><i class="far fa-file"></i> Nuevo</a></li>
+</ul>
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+        <div class="panel-group">
+        <div class="panel panel-success">
+            <div class="panel-body">
+                <div id="divLoader" class="modal fade in Loading" role="dialog" style="display:none;">
+                    <center class="centrado">
+                        <h2>Procesando..</h2>
+                        <p></p>
+                        <img src="~/Content/Imagenes/Loading.gif" alt="Loader" />
+                    </center>
+                </div>
+                @if (ViewBag.Err != null)
+                {
+                    <div class="alert alert-danger">@ViewBag.Err</div>
+                }
+    <div class="form-horizontal">
+        @Html.ValidationSummary("", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.emp_nit, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.emp_nit, new { htmlAttributes = new { @class = "form-control", placeholder = Html.DisplayNameFor(x => x.emp_nit) + " *" } })
+                @Html.ValidationMessageFor(model => model.emp_nit, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.emp_dv, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.emp_dv, new { htmlAttributes = new { @class = "form-control", placeholder = Html.DisplayNameFor(x => x.emp_dv) + " *" } })
+                @Html.ValidationMessageFor(model => model.emp_dv, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.emp_nombre, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.emp_nombre, new { htmlAttributes = new { @class = "form-control", placeholder = Html.DisplayNameFor(x => x.emp_nombre) + " *" } })
+                @Html.ValidationMessageFor(model => model.emp_nombre, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.emp_direccion, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.emp_direccion, new { htmlAttributes = new { @class = "form-control", placeholder = Html.DisplayNameFor(x => x.emp_direccion) + " *" } })
+                @Html.ValidationMessageFor(model => model.emp_direccion, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ciu_codigo, "ciu_codigo", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("ciu_codigo", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ciu_codigo, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.emp_telefono, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.emp_telefono, new { htmlAttributes = new { @class = "form-control", placeholder = Html.DisplayNameFor(x => x.emp_telefono) + " *" } })
+                @Html.ValidationMessageFor(model => model.emp_telefono, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.emp_logo, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.emp_logo, new { htmlAttributes = new { @class = "form-control", placeholder = Html.DisplayNameFor(x => x.emp_logo) + " *" } })
+                @Html.ValidationMessageFor(model => model.emp_logo, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.emp_url, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.emp_url, new { htmlAttributes = new { @class = "form-control", placeholder = Html.DisplayNameFor(x => x.emp_url) + " *" } })
+                @Html.ValidationMessageFor(model => model.emp_url, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+    </div>
+
+            </div>
+            <div class="panel-footer">
+                <button type="submit" id="btnSubmit" class="btn btn-success btn-sm">
+                    <span class="glyphicon glyphicon-ok"></span> Guardar
+                </button>
+                <a class='btn btn-danger btn-sm' href="@Url.Action("Index")">
+                    <span class="glyphicon glyphicon-remove"></span> Cancelar
+                </a>
+
+            </div>
+        </div>
+    </div>
+
+
+
+}
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/datatables")
+    <script type="text/javascript">
+        $("#emp_nit").focus();
+
+        $("#btnSubmit").click(function () {
+            $("#divLoader").show();
+        });
+    </script>
+
+}

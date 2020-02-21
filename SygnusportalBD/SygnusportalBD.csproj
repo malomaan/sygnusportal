@@ -70,6 +70,7 @@
       <DependentUpon>sygnusportalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="EmpresaBD.cs" />
+    <Compile Include="EmpresaMetadata.cs" />
     <Compile Include="Empresa_List_Result.cs">
       <DependentUpon>sygnusportalModel.tt</DependentUpon>
     </Compile>
