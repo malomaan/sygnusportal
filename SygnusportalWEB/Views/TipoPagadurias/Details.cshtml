@@ -1,0 +1,44 @@
+﻿@model SygnusportalBD.TipoPagaduria
+
+@{
+    ViewBag.Title = "Details";
+}
+<p>
+        <h2>TipoPagaduria Details</h2>
+</p>
+<ul class="nav nav-tabs">
+    <li><a href="@Url.Action("Index")"><i class="far fa-list-alt"></i> TipoPagaduria</a></li>
+    <li class="active"><a href="@Url.Action("Details",new { id = Model.tpa_id })"><i class="far fa-file"></i> Detalles</a></li>
+</ul>
+<div class="panel-group">
+        <div class="panel panel-success">
+            <div class="panel-body">
+<p></p>
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.tpa_descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tpa_descripcion)
+        </dd>
+
+    </dl>
+</div>
+                </div>
+            <div class="panel-footer">
+                <a class='btn btn-success btn-sm' href="@Url.Action("Edit",new { id = Model.tpa_id })">
+                    <span class="glyphicon glyphicon-edit"></span> Editar
+                </a>
+
+                <a class='btn btn-danger btn-sm' href="@Url.Action("Index")">
+                    <span class="glyphicon glyphicon-remove"></span> Cancelar
+                </a>
+
+            </div>
+        </div>
+    </div>
+
+<p>
+</p>

@@ -1,13 +1,13 @@
-﻿@model IEnumerable<SygnusportalBD.Ciudad>
+﻿@model IEnumerable<SygnusportalBD.TipoPagaduria>
 
 @{
-    ViewBag.Title = "Ciudad ";
+    ViewBag.Title = "TipoPagaduria ";
 }
 <p>
     <h2>@ViewBag.Title</h2>
 </p>
 <ul class="nav nav-tabs">
-    <li class="active"><a href="@Url.Action("Index")"><i class="far fa-list-alt"></i> Ciudad </a></li>
+    <li class="active"><a href="@Url.Action("Index")"><i class="far fa-list-alt"></i> TipoPagaduria </a></li>
     <li><a href="@Url.Action("Create")"><i class="far fa-file"></i> Nuevo</a></li>
 </ul>
 
@@ -21,13 +21,7 @@
                         <tr>
                             <th width="250px"></th>
                             <th>
-                                @Html.DisplayNameFor(model => model.ciu_nombre)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.ciu_capital)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.Departamento.dep_nombre)
+                                @Html.DisplayNameFor(model => model.tpa_descripcion)
                             </th>
                         </tr>
                     </thead>
@@ -37,25 +31,20 @@
 @foreach (var item in Model) {
                         <tr>
                             <td>
+                            <td>
 
-                                <a class='btn btn-primary btn-sm btn-grid' href="@Url.Action("Edit", new { id = item.ciu_codigo })">
+                                <a class='btn btn-primary btn-sm btn-grid' href="@Url.Action("Edit", new { id = item.tpa_id })">
                                     <span class="glyphicon glyphicon-folder-open"></span> Editar
                                 </a>
-                                <a class='btn btn-primary btn-sm btn-grid' href="@Url.Action("Details", new { id = item.ciu_codigo})">
+                                <a class='btn btn-primary btn-sm btn-grid' href="@Url.Action("Details", new { id = item.tpa_id})">
                                     <span class="glyphicon glyphicon-list-alt"></span> Detalles
                                 </a>
-                                <a class='btn btn-danger btn-sm btn-grid' href="@Url.Action("Delete", new { id = item.ciu_codigo})">
+                                <a class='btn btn-danger btn-sm btn-grid' href="@Url.Action("Delete", new { id = item.tpa_id})">
                                     <span class="glyphicon glyphicon-remove"></span> Eliminar
                                 </a>
                             </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.ciu_nombre)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.ciu_capital)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Departamento.dep_nombre)
+
+                            @Html.DisplayFor(modelItem => item.tpa_descripcion)
                             </td>
                         </tr>
 }

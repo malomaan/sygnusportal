@@ -52,6 +52,11 @@ textarea {
     text-align: center;
 }
 
+.panel-body {
+    padding: 15px;
+    background-color:#f5f5f5;
+}
+
 .nav-tabs {
     /*border-bottom: 1px solid #ddd;
     border-bottom-width: 0px;*/

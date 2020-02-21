@@ -28,7 +28,7 @@
                     <div class="alert alert-danger">@ViewBag.Err</div>
                 }
     <div class="form-horizontal">
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.ValidationSummary("", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.pai_codigo)
 
         <div class="form-group">

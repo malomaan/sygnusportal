@@ -1,15 +1,15 @@
-﻿@model SygnusportalBD.Ciudad
+﻿@model SygnusportalBD.TipoPagaduria
 
 @{
     ViewBag.Title = "Delete";
 }
 
 <p>
-        <h2>Ciudad Delete</h2>
+        <h2>TipoPagaduria Delete</h2>
 </p>
 <ul class="nav nav-tabs">
-    <li><a href="@Url.Action("Index")"><i class="far fa-list-alt"></i> Ciudad</a></li>
-    <li class="active"><a href="@Url.Action("Details",new { id = Model.ciu_codigo })"><i class="far fa-file"></i> Delete</a></li>
+    <li><a href="@Url.Action("Index")"><i class="far fa-list-alt"></i> TipoPagaduria</a></li>
+    <li class="active"><a href="@Url.Action("Details",new { id = Model.tpa_id })"><i class="far fa-file"></i> Delete</a></li>
 </ul>
 
        <div class="panel-group">
@@ -26,27 +26,11 @@
     <h3 class="text-center">¿Estás segura de que quieres eliminar el Registro?</h3>
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.ciu_nombre)
+            @Html.DisplayNameFor(model => model.tpa_descripcion)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ciu_nombre)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ciu_capital)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ciu_capital)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Departamento.dep_nombre)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Departamento.dep_nombre)
+            @Html.DisplayFor(model => model.tpa_descripcion)
         </dd>
 
     </dl>

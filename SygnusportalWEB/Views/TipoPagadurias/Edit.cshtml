@@ -1,13 +1,13 @@
-﻿@model SygnusportalBD.Departamento
+﻿@model SygnusportalBD.TipoPagaduria
 
 @{
     ViewBag.Title = "Edit";
 }
 
-<h2>Departamento Edit</h2>
+<h2>TipoPagaduria Edit</h2>
 <ul class="nav nav-tabs">
-    <li><a href="@Url.Action("Index")"><i class="far fa-list-alt"></i> Departamento</a></li>
-    <li class="active"><a href="@Url.Action("Edit",new { id = Model.dep_codigo })"><i class="far fa-file"></i> Editar</a></li>
+    <li><a href="@Url.Action("Index")"><i class="far fa-list-alt"></i> TipoPagaduria</a></li>
+    <li class="active"><a href="@Url.Action("Edit",new { id = Model.tpa_id })"><i class="far fa-file"></i> Editar</a></li>
 </ul>
 
 @using (Html.BeginForm())
@@ -28,22 +28,14 @@
                     <div class="alert alert-danger">@ViewBag.Err</div>
                 }
     <div class="form-horizontal">
-        @Html.ValidationSummary("", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.dep_codigo)
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.tpa_id)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.dep_nombre, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.tpa_descripcion, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.dep_nombre, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.dep_nombre, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.pai_codigo, "pai_codigo", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("pai_codigo", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.pai_codigo, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.tpa_descripcion, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.tpa_descripcion, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -68,7 +60,7 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/datatables")
     <script type="text/javascript">
-        $("#dep_codigo").focus();
+        $("#tpa_id").focus();
 
         $("#btnSubmit").click(function () {
             $("#divLoader").show();

@@ -52,9 +52,16 @@ namespace SygnusportalWEB.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Ciudad.Add(ciudad);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                try
+                {
+                    db.Ciudad.Add(ciudad);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                catch (Exception Ex)
+                {
+                    ViewBag.Err = "Error al tratar de guardar el Registro " + Ex.Message;
+                }
             }
 
             ViewBag.dep_codigo = new SelectList(db.Departamento, "dep_codigo", "dep_nombre", ciudad.dep_codigo);

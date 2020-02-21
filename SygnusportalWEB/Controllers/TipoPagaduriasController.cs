@@ -10,49 +10,49 @@ using SygnusportalBD;
 
 namespace SygnusportalWEB.Controllers
 {
-    public class PaisController : Controller
+    public class TipoPagaduriasController : Controller
     {
         private sygnusportalEntities db = new sygnusportalEntities();
 
-        // GET: Pais
+        // GET: TipoPagadurias
         public ActionResult Index()
         {
-            return View(db.Pais.ToList());
+            return View(db.TipoPagaduria.ToList());
         }
 
-        // GET: Pais/Details/5
-        public ActionResult Details(string id)
+        // GET: TipoPagadurias/Details/5
+        public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Pais pais = db.Pais.Find(id);
-            if (pais == null)
+            TipoPagaduria tipoPagaduria = db.TipoPagaduria.Find(id);
+            if (tipoPagaduria == null)
             {
                 return HttpNotFound();
             }
-            return View(pais);
+            return View(tipoPagaduria);
         }
 
-        // GET: Pais/Create
+        // GET: TipoPagadurias/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Pais/Create
+        // POST: TipoPagadurias/Create
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "pai_codigo,pai_nombre,pai_codigointernacional,pai_predeterminado")] Pais pais)
+        public ActionResult Create([Bind(Include = "tpa_id,tpa_descripcion")] TipoPagaduria tipoPagaduria)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
-                    db.Pais.Add(pais);
+                    db.TipoPagaduria.Add(tipoPagaduria);
                     db.SaveChanges();
                     return RedirectToAction("Index");
                 }
@@ -62,62 +62,62 @@ namespace SygnusportalWEB.Controllers
                 }
             }
 
-            return View(pais);
+            return View(tipoPagaduria);
         }
 
-        // GET: Pais/Edit/5
-        public ActionResult Edit(string id)
+        // GET: TipoPagadurias/Edit/5
+        public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Pais pais = db.Pais.Find(id);
-            if (pais == null)
+            TipoPagaduria tipoPagaduria = db.TipoPagaduria.Find(id);
+            if (tipoPagaduria == null)
             {
                 return HttpNotFound();
             }
-            return View(pais);
+            return View(tipoPagaduria);
         }
 
-        // POST: Pais/Edit/5
+        // POST: TipoPagadurias/Edit/5
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "pai_codigo,pai_nombre,pai_codigointernacional,pai_predeterminado")] Pais pais)
+        public ActionResult Edit([Bind(Include = "tpa_id,tpa_descripcion")] TipoPagaduria tipoPagaduria)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(pais).State = EntityState.Modified;
+                db.Entry(tipoPagaduria).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(pais);
+            return View(tipoPagaduria);
         }
 
-        // GET: Pais/Delete/5
-        public ActionResult Delete(string id)
+        // GET: TipoPagadurias/Delete/5
+        public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Pais pais = db.Pais.Find(id);
-            if (pais == null)
+            TipoPagaduria tipoPagaduria = db.TipoPagaduria.Find(id);
+            if (tipoPagaduria == null)
             {
                 return HttpNotFound();
             }
-            return View(pais);
+            return View(tipoPagaduria);
         }
 
-        // POST: Pais/Delete/5
+        // POST: TipoPagadurias/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(string id)
+        public ActionResult DeleteConfirmed(int id)
         {
-            Pais pais = db.Pais.Find(id);
-            db.Pais.Remove(pais);
+            TipoPagaduria tipoPagaduria = db.TipoPagaduria.Find(id);
+            db.TipoPagaduria.Remove(tipoPagaduria);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

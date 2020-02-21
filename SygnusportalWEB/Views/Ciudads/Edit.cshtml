@@ -6,8 +6,8 @@
 
 <h2>Ciudad Edit</h2>
 <ul class="nav nav-tabs">
-    <li><a href="@Url.Action("Index")"><i class="far fa-list-alt"></i> Paises</a></li>
-    <li class="active"><a href="@Url.Action("Create")"><i class="far fa-file"></i> Nuevo</a></li>
+    <li><a href="@Url.Action("Index")"><i class="far fa-list-alt"></i> Ciudad</a></li>
+    <li class="active"><a href="@Url.Action("Edit",new { id = Model.ciu_codigo })"><i class="far fa-file"></i> Editar</a></li>
 </ul>
 
 @using (Html.BeginForm())
@@ -78,7 +78,7 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/datatables")
     <script type="text/javascript">
-        $("#pai_codigo").focus();
+        $("#ciu_codigo").focus();
 
         $("#btnSubmit").click(function () {
             $("#divLoader").show();

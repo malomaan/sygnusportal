@@ -8,7 +8,7 @@
         <h2>Ciudad Create</h2>
 </p>
 <ul class="nav nav-tabs">
-    <li><a href="@Url.Action("Index")"><i class="far fa-list-alt"></i> Paises</a></li>
+    <li><a href="@Url.Action("Index")"><i class="far fa-list-alt"></i> Ciudad</a></li>
     <li class="active"><a href="@Url.Action("Create")"><i class="far fa-file"></i> Nuevo</a></li>
 </ul>
 @using (Html.BeginForm()) 
@@ -74,6 +74,7 @@
                 <a class='btn btn-danger btn-sm' href="@Url.Action("Index")">
                     <span class="glyphicon glyphicon-remove"></span> Cancelar
                 </a>
+
             </div>
         </div>
     </div>
@@ -87,7 +88,7 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/datatables")
     <script type="text/javascript">
-        $("#pai_codigo").focus();
+        $("#ciu_codigo").focus();
 
         $("#btnSubmit").click(function () {
             $("#divLoader").show();

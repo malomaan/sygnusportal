@@ -173,6 +173,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PaisController.cs" />
+    <Compile Include="Controllers\TipoPagaduriasController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -538,21 +539,26 @@
     <Content Include="Views\Shared\DisplayTemplates\Boolean.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\Decimal.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Boolean.cshtml" />
-    <Content Include="Views\Ciudads\Create.cshtml" />
-    <Content Include="Views\Ciudads\Delete.cshtml" />
-    <Content Include="Views\Ciudads\Details.cshtml" />
-    <Content Include="Views\Ciudads\Edit.cshtml" />
-    <Content Include="Views\Ciudads\Index.cshtml" />
-    <Content Include="Views\Departamentoes\Create.cshtml" />
-    <Content Include="Views\Departamentoes\Delete.cshtml" />
-    <Content Include="Views\Departamentoes\Details.cshtml" />
-    <Content Include="Views\Departamentoes\Edit.cshtml" />
-    <Content Include="Views\Departamentoes\Index.cshtml" />
     <Content Include="Views\Pais\Create.cshtml" />
     <Content Include="Views\Pais\Delete.cshtml" />
     <Content Include="Views\Pais\Details.cshtml" />
     <Content Include="Views\Pais\Edit.cshtml" />
     <Content Include="Views\Pais\Index.cshtml" />
+    <Content Include="Views\Departamentoes\Create.cshtml" />
+    <Content Include="Views\Departamentoes\Delete.cshtml" />
+    <Content Include="Views\Departamentoes\Details.cshtml" />
+    <Content Include="Views\Departamentoes\Edit.cshtml" />
+    <Content Include="Views\Departamentoes\Index.cshtml" />
+    <Content Include="Views\Ciudads\Create.cshtml" />
+    <Content Include="Views\Ciudads\Delete.cshtml" />
+    <Content Include="Views\Ciudads\Details.cshtml" />
+    <Content Include="Views\Ciudads\Edit.cshtml" />
+    <Content Include="Views\Ciudads\Index.cshtml" />
+    <Content Include="Views\TipoPagadurias\Create.cshtml" />
+    <Content Include="Views\TipoPagadurias\Delete.cshtml" />
+    <Content Include="Views\TipoPagadurias\Details.cshtml" />
+    <Content Include="Views\TipoPagadurias\Edit.cshtml" />
+    <Content Include="Views\TipoPagadurias\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
