@@ -112,6 +112,27 @@ namespace SygnusportalPRC
                 throw (Ex);
             }
         }
+
+        // ===========================================================================
+        /// <summary>
+        /// Author     : MARCO ANTONIO MARTINEZ LOPEZ
+        /// Create date: Feb 10 2020 10:32AM
+        /// Método que permite listar de la tabla Departamento Por Pais capa PRC
+        /// </summary>
+        // ******************* = Método List = ******************************
+        public List<Departamento_List_Pais_Result> Departamento_List_Pais(string pai_codigo)
+        {
+            try
+            {
+                var Departamento = (from TDepartamento in BDDepartamento.Departamento_List_Pais(pai_codigo) select TDepartamento).ToList();
+                return Departamento;
+            }
+            catch (Exception Ex)
+            {
+                throw (Ex);
+            }
+        }
+
     }
     //FIN DE LA CLASE
 

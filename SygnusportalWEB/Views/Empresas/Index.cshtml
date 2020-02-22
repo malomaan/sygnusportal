@@ -4,7 +4,7 @@
     ViewBag.Title = "Empresa ";
 }
 <p>
-    <h2>@ViewBag.Title</h2>
+    <h2 class="titulo">@ViewBag.Title</h2>
 </p>
 <ul class="nav nav-tabs">
     <li class="active"><a href="@Url.Action("Index")"><i class="far fa-list-alt"></i> Empresa </a></li>
@@ -31,9 +31,6 @@
                             </th>
                             <th>
                                 @Html.DisplayNameFor(model => model.emp_telefono)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.emp_logo)
                             </th>
                             <th>
                                 @Html.DisplayNameFor(model => model.emp_url)
@@ -71,9 +68,6 @@
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.emp_telefono)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.emp_logo)
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.emp_url)

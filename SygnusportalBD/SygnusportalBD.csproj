@@ -55,6 +55,9 @@
     </Compile>
     <Compile Include="CiudadBD.cs" />
     <Compile Include="CiudadMetadata.cs" />
+    <Compile Include="Ciudad_List_Departamento_Result.cs">
+      <DependentUpon>sygnusportalModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Ciudad_List_Result.cs">
       <DependentUpon>sygnusportalModel.tt</DependentUpon>
     </Compile>
@@ -63,6 +66,9 @@
     </Compile>
     <Compile Include="DepartamentoBD.cs" />
     <Compile Include="DepartamentoMetadata.cs" />
+    <Compile Include="Departamento_List_Pais_Result.cs">
+      <DependentUpon>sygnusportalModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Departamento_List_Result.cs">
       <DependentUpon>sygnusportalModel.tt</DependentUpon>
     </Compile>

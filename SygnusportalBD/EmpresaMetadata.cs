@@ -51,9 +51,10 @@ namespace SygnusportalBD
             public string emp_logo { get; set; }
 
             [DisplayName("URL")]
-            [DataType(DataType.Url)]
             [Required(ErrorMessage = "Debe ingresar el {0}")]
             [StringLength(250)]
+            //[RegularExpression(@"^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$", ErrorMessage = "Por favor debe ingresar una dirección de Correo Electónico")]           
+            [RegularExpression(@"http(s)?://([\w-]+\.)+[\w-]+(/[\w- ./?%&=]*)?", ErrorMessage = "Por favor debe ingresar una dirección URL")]
             public string emp_url { get; set; }
 
         }

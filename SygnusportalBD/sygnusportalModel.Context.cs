@@ -567,5 +567,23 @@ namespace SygnusportalBD
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Tipopagaduria_Update", tpa_idParameter, tpa_descripcionParameter);
         }
+    
+        public virtual ObjectResult<Ciudad_List_Departamento_Result> Ciudad_List_Departamento(string dep_codigo)
+        {
+            var dep_codigoParameter = dep_codigo != null ?
+                new ObjectParameter("dep_codigo", dep_codigo) :
+                new ObjectParameter("dep_codigo", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Ciudad_List_Departamento_Result>("Ciudad_List_Departamento", dep_codigoParameter);
+        }
+    
+        public virtual ObjectResult<Departamento_List_Pais_Result> Departamento_List_Pais(string pai_codigo)
+        {
+            var pai_codigoParameter = pai_codigo != null ?
+                new ObjectParameter("pai_codigo", pai_codigo) :
+                new ObjectParameter("pai_codigo", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Departamento_List_Pais_Result>("Departamento_List_Pais", pai_codigoParameter);
+        }
     }
 }

@@ -97,6 +97,7 @@ namespace SygnusportalBD
                 throw (Ex);
             }
         }
+
         // ===========================================================================
         /// <summary>
         /// Author     : MARCO ANTONIO MARTINEZ LOPEZ
@@ -116,6 +117,27 @@ namespace SygnusportalBD
                 throw (Ex);
             }
         }
+
+        // ===========================================================================
+        /// <summary>
+        /// Author     : MARCO ANTONIO MARTINEZ LOPEZ
+        /// Create date: Feb 10 2020 10:34AM
+        /// Método que permite listar de la tabla Ciudad de un Departamento capa BD
+        /// </summary>
+        // ******************* = Método List = ******************************
+        public List<Ciudad_List_Departamento_Result> Ciudad_List_Departamento(string dep_codigo)
+        {
+            try
+            {
+                var Ciudad = (from TCiudad in BD.Ciudad_List_Departamento(dep_codigo) select TCiudad).ToList();
+                return Ciudad;
+            }
+            catch (Exception Ex)
+            {
+                throw (Ex);
+            }
+        }
+
     }
     //FIN DE LA CLASE
 

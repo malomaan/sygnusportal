@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="sygnusportalModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="sygnusportalModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Ciudad">
           <Key>
             <PropertyRef Name="ciu_codigo" />
@@ -167,6 +167,9 @@
         <Function Name="Ciudad_List" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ciu_codigo" Type="varchar" Mode="In" />
         </Function>
+        <Function Name="Ciudad_List_Departamento" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="dep_codigo" Type="varchar" Mode="In" />
+        </Function>
         <Function Name="Ciudad_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ciu_codigo" Type="varchar" Mode="In" />
           <Parameter Name="ciu_nombre" Type="varchar" Mode="In" />
@@ -183,6 +186,9 @@
         </Function>
         <Function Name="Departamento_List" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="dep_codigo" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Departamento_List_Pais" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="pai_codigo" Type="varchar" Mode="In" />
         </Function>
         <Function Name="Departamento_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="dep_codigo" Type="varchar" Mode="In" />
@@ -349,8 +355,7 @@
             <End Role="Pagaduria" EntitySet="Pagaduria" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="sygnusportalModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -549,7 +554,7 @@
             <End Role="Pagaduria" EntitySet="Pagaduria" />
           </AssociationSet>
           <FunctionImport Name="Ciudad_Delete">
-            <Parameter Name="ciu_codigo" Mode="In" Type="String" />
+          <Parameter Name="ciu_codigo" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Ciudad_Insert">
             <Parameter Name="ciu_codigo" Mode="In" Type="String" />
@@ -558,7 +563,7 @@
             <Parameter Name="dep_codigo" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Ciudad_List" ReturnType="Collection(sygnusportalModel.Ciudad_List_Result)">
-            <Parameter Name="ciu_codigo" Mode="In" Type="String" />
+          <Parameter Name="ciu_codigo" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Ciudad_Update">
             <Parameter Name="ciu_codigo" Mode="In" Type="String" />
@@ -567,7 +572,7 @@
             <Parameter Name="dep_codigo" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Departamento_Delete">
-            <Parameter Name="dep_codigo" Mode="In" Type="String" />
+          <Parameter Name="dep_codigo" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Departamento_Insert">
             <Parameter Name="dep_codigo" Mode="In" Type="String" />
@@ -575,7 +580,7 @@
             <Parameter Name="pai_codigo" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Departamento_List" ReturnType="Collection(sygnusportalModel.Departamento_List_Result)">
-            <Parameter Name="dep_codigo" Mode="In" Type="String" />
+          <Parameter Name="dep_codigo" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Departamento_Update">
             <Parameter Name="dep_codigo" Mode="In" Type="String" />
@@ -583,7 +588,7 @@
             <Parameter Name="pai_codigo" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Empresa_Delete">
-            <Parameter Name="emp_nit" Mode="In" Type="String" />
+          <Parameter Name="emp_nit" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Empresa_Insert">
             <Parameter Name="emp_nit" Mode="In" Type="String" />
@@ -596,7 +601,7 @@
             <Parameter Name="emp_url" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Empresa_List" ReturnType="Collection(sygnusportalModel.Empresa_List_Result)">
-            <Parameter Name="emp_nit" Mode="In" Type="String" />
+          <Parameter Name="emp_nit" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Empresa_Update">
             <Parameter Name="emp_nit" Mode="In" Type="String" />
@@ -609,7 +614,7 @@
             <Parameter Name="emp_url" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Pagaduria_Delete">
-            <Parameter Name="pag_id" Mode="In" Type="Int32" />
+          <Parameter Name="pag_id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Pagaduria_Insert">
             <Parameter Name="pag_codigo" Mode="In" Type="String" />
@@ -631,7 +636,7 @@
             <Parameter Name="pag_fax" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Pagaduria_List" ReturnType="Collection(sygnusportalModel.Pagaduria_List_Result)">
-            <Parameter Name="pag_id" Mode="In" Type="Int32" />
+          <Parameter Name="pag_id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Pagaduria_ListActivasPeriodos" ReturnType="Collection(sygnusportalModel.Pagaduria_ListActivasPeriodos_Result)" />
           <FunctionImport Name="Pagaduria_Update">
@@ -655,7 +660,7 @@
             <Parameter Name="pag_fax" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Pais_Delete">
-            <Parameter Name="pai_codigo" Mode="In" Type="String" />
+          <Parameter Name="pai_codigo" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Pais_Insert">
             <Parameter Name="pai_codigo" Mode="In" Type="String" />
@@ -664,7 +669,7 @@
             <Parameter Name="pai_predeterminado" Mode="In" Type="Boolean" />
           </FunctionImport>
           <FunctionImport Name="Pais_List" ReturnType="Collection(sygnusportalModel.Pais_List_Result)">
-            <Parameter Name="pai_codigo" Mode="In" Type="String" />
+          <Parameter Name="pai_codigo" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Pais_Update">
             <Parameter Name="pai_codigo" Mode="In" Type="String" />
@@ -673,7 +678,7 @@
             <Parameter Name="pai_predeterminado" Mode="In" Type="Boolean" />
           </FunctionImport>
           <FunctionImport Name="Tipodato_Delete">
-            <Parameter Name="tda_id" Mode="In" Type="Int32" />
+          <Parameter Name="tda_id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Tipodato_Insert">
             <Parameter Name="tda_nombre" Mode="In" Type="String" />
@@ -681,7 +686,7 @@
             <Parameter Name="tda_valorpredeterminado" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Tipodato_List" ReturnType="Collection(sygnusportalModel.Tipodato_List_Result)">
-            <Parameter Name="tda_id" Mode="In" Type="Int32" />
+          <Parameter Name="tda_id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Tipodato_Update">
             <Parameter Name="tda_id" Mode="In" Type="Int32" />
@@ -690,17 +695,23 @@
             <Parameter Name="tda_valorpredeterminado" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Tipopagaduria_Delete">
-            <Parameter Name="tpa_id" Mode="In" Type="Int32" />
+          <Parameter Name="tpa_id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Tipopagaduria_Insert">
-            <Parameter Name="tpa_descripcion" Mode="In" Type="String" />
+          <Parameter Name="tpa_descripcion" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Tipopagaduria_List" ReturnType="Collection(sygnusportalModel.Tipopagaduria_List_Result)">
-            <Parameter Name="tpa_id" Mode="In" Type="Int32" />
+          <Parameter Name="tpa_id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Tipopagaduria_Update">
             <Parameter Name="tpa_id" Mode="In" Type="Int32" />
             <Parameter Name="tpa_descripcion" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Ciudad_List_Departamento" ReturnType="Collection(sygnusportalModel.Ciudad_List_Departamento_Result)">
+            <Parameter Name="dep_codigo" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Departamento_List_Pais" ReturnType="Collection(sygnusportalModel.Departamento_List_Pais_Result)">
+            <Parameter Name="pai_codigo" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="Ciudad_List_Result">
@@ -783,6 +794,17 @@
         <ComplexType Name="Tipopagaduria_List_Result">
           <Property Type="Int32" Name="tpa_id" Nullable="false" />
           <Property Type="String" Name="tpa_descripcion" Nullable="true" MaxLength="250" />
+        </ComplexType>
+        <ComplexType Name="Ciudad_List_Departamento_Result">
+          <Property Type="String" Name="ciu_codigo" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="ciu_nombre" Nullable="true" MaxLength="250" />
+          <Property Type="Boolean" Name="ciu_capital" Nullable="true" />
+          <Property Type="String" Name="dep_codigo" Nullable="true" MaxLength="20" />
+        </ComplexType>
+        <ComplexType Name="Departamento_List_Pais_Result">
+          <Property Type="String" Name="dep_codigo" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="dep_nombre" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="pai_codigo" Nullable="true" MaxLength="20" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1009,6 +1031,25 @@
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="Tipopagaduria_Update" FunctionName="sygnusportalModel.Store.Tipopagaduria_Update" />
+          <FunctionImportMapping FunctionImportName="Ciudad_List_Departamento" FunctionName="sygnusportalModel.Store.Ciudad_List_Departamento">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="sygnusportalModel.Ciudad_List_Departamento_Result">
+                <ScalarProperty Name="ciu_codigo" ColumnName="ciu_codigo" />
+                <ScalarProperty Name="ciu_nombre" ColumnName="ciu_nombre" />
+                <ScalarProperty Name="ciu_capital" ColumnName="ciu_capital" />
+                <ScalarProperty Name="dep_codigo" ColumnName="dep_codigo" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Departamento_List_Pais" FunctionName="sygnusportalModel.Store.Departamento_List_Pais">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="sygnusportalModel.Departamento_List_Pais_Result">
+                <ScalarProperty Name="dep_codigo" ColumnName="dep_codigo" />
+                <ScalarProperty Name="dep_nombre" ColumnName="dep_nombre" />
+                <ScalarProperty Name="pai_codigo" ColumnName="pai_codigo" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

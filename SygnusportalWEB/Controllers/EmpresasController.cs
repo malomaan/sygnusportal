@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -48,8 +49,18 @@ namespace SygnusportalWEB.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "emp_nit,emp_dv,emp_nombre,emp_direccion,ciu_codigo,emp_telefono,emp_logo,emp_url")] Empresa empresa)
+        public ActionResult Create([Bind(Include = "emp_nit,emp_dv,emp_nombre,emp_direccion,ciu_codigo,emp_telefono,emp_logo,emp_url")] Empresa empresa, HttpPostedFileBase file)
         {
+
+            if (file != null)
+            {
+                var nombreArchivo = Path.GetFileName(file.FileName);
+                var path = Path.Combine(Server.MapPath("~/Uploads"), nombreArchivo);
+                file.SaveAs(path);
+                empresa.emp_logo = "/Uploads/" + nombreArchivo;
+            }
+
+
             if (ModelState.IsValid)
             {
                 try
@@ -135,5 +146,35 @@ namespace SygnusportalWEB.Controllers
             }
             base.Dispose(disposing);
         }
+
+        //Metodos Json para llenar combos Departamento y Ciudad
+        /// <summary>
+        /// Metodo que permite cargar el filtro de departamentos por pais
+        /// </summary>
+        /// <param name="pai_codigo"></param>
+        /// <returns></returns>
+        public JsonResult GetDepartamento(string id)
+        {
+            DepartamentoBD BD = new DepartamentoBD();
+            var TDepartamento = BD.Departamento_List_Pais(id).ToList();
+            return Json(TDepartamento);
+
+
+            //return Json(new SelectList(TDepartamento, "Value", "Text", JsonRequestBehavior.AllowGet));
+        }
+
+        /// <summary>
+        /// Metodo que permite filtrar las ciudades por Departamento
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public JsonResult GetCiudad(string id)
+        {
+            CiudadBD BD = new CiudadBD();
+            var TCiudad = BD.Ciudad_List_Departamento(id).ToList();
+            return Json(TCiudad);
+
+        }
+
     }
 }
