@@ -2,7 +2,7 @@
     padding-top: 50px;
     padding-bottom: 20px;
     font-family: 'Cairo', sans-serif;
-    background-color: #414D68;
+    /*background-color: #414D68;*/
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -76,7 +76,7 @@ textarea {
 
 .panel-body {
     padding: 15px;
-    background-color: #ecf0f1;
+    background-color: white;
 }
 
 .nav-tabs {
@@ -91,7 +91,7 @@ textarea {
         line-height: 1.4285;
         border: 1px solid transparent;
         border-radius: 4px 4px 0 0;
-        background-color: #bdc8ca;
+        background-color: white;
         color: black;
         /*opacity: 0.5;*/
     }

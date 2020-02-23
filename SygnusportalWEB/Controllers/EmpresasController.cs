@@ -40,6 +40,24 @@ namespace SygnusportalWEB.Controllers
         // GET: Empresas/Create
         public ActionResult Create()
         {
+            PaisBD BDPais = new PaisBD();
+            var TPais = BDPais.Pais_List(null).ToList();
+            string pai_codigo = TPais.First().pai_codigo;
+
+            DepartamentoBD BDDepartamento = new DepartamentoBD();
+            var TDepartamento = BDDepartamento.Departamento_List_Pais(pai_codigo).ToList();
+            string dep_codigo = "";
+            if (TDepartamento.Count != 0)
+            {
+                dep_codigo = TDepartamento.First().dep_codigo;
+            }           
+            ViewBag.pai_codigo = new SelectList(TPais, "pai_codigo", "pai_nombre");
+            ViewBag.dep_codigo = new SelectList(TDepartamento, "dep_codigo", "dep_nombre");
+            ViewBag.ciu_codigo = new SelectList(db.Ciudad_List_Departamento(dep_codigo), "ciu_codigo", "ciu_nombre");
+
+
+
+
             ViewBag.ciu_codigo = new SelectList(db.Ciudad, "ciu_codigo", "ciu_nombre");
             return View();
         }
@@ -74,6 +92,20 @@ namespace SygnusportalWEB.Controllers
                     ViewBag.Err = "Error al tratar de guardar el Registro " + Ex.Message;
                 }
             }
+            PaisBD BDPais = new PaisBD();
+            var TPais = BDPais.Pais_List(null).ToList();
+            string pai_codigo = TPais.First().pai_codigo;
+
+            DepartamentoBD BDDepartamento = new DepartamentoBD();
+            var TDepartamento = BDDepartamento.Departamento_List_Pais(pai_codigo).ToList();
+            string dep_codigo = "";
+            if (TDepartamento.Count != 0)
+            {
+                dep_codigo = TDepartamento.First().dep_codigo;
+            }
+            ViewBag.pai_codigo = new SelectList(TPais, "pai_codigo", "pai_nombre");
+            ViewBag.dep_codigo = new SelectList(TDepartamento, "dep_codigo", "dep_nombre");
+            ViewBag.ciu_codigo = new SelectList(db.Ciudad_List_Departamento(dep_codigo), "ciu_codigo", "ciu_nombre");
 
             ViewBag.ciu_codigo = new SelectList(db.Ciudad, "ciu_codigo", "ciu_nombre", empresa.ciu_codigo);
             return View(empresa);
