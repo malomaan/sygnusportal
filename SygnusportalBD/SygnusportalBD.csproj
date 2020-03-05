@@ -84,6 +84,7 @@
       <DependentUpon>sygnusportalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="PagaduriaBD.cs" />
+    <Compile Include="PagaduriaMetadata.cs" />
     <Compile Include="Pagaduria_ListActivasPeriodos_Result.cs">
       <DependentUpon>sygnusportalModel.tt</DependentUpon>
     </Compile>

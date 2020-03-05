@@ -1,0 +1,135 @@
+﻿@model IEnumerable<SygnusportalBD.Pagaduria>
+
+@{
+    ViewBag.Title = "Pagaduria ";
+}
+<p>
+    <h2>@ViewBag.Title</h2>
+</p>
+<ul class="nav nav-tabs">
+    <li class="active"><a href="@Url.Action("Index")"><i class="far fa-list-alt"></i> Pagaduria </a></li>
+    <li><a href="@Url.Action("Create")"><i class="far fa-file"></i> Nuevo</a></li>
+</ul>
+
+
+<div class="panel-group">
+    <div class="panel panel-success">
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table id="listar" class="table table-bordered table-hover table-condensed">
+                    <thead>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.pag_codigo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.pag_nit)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.pag_dv)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.pag_nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.pag_direccion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.pag_telefonos)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.pag_color)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.pag_activa)
+        </th>
+        <th width="100px"></th>
+    </tr>
+                    </thead>
+                    <tbody>
+
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.pag_codigo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.pag_nit)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.pag_dv)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.pag_nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.pag_direccion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.pag_telefonos)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.pag_color)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.pag_activa)
+        </td>
+        <td>
+
+		<a class='btn btn-primary btn-sm btn-grid' href="@Url.Action("Edit", new { id = item.pag_id })">
+                	<span class="glyphicon glyphicon-folder-open"></span> Editar
+		</a>
+                <a class='btn btn-primary btn-sm btn-grid' href="@Url.Action("Details", new { id = item.pag_id})">
+                    	<span class="glyphicon glyphicon-list-alt"></span> Detalles
+                </a>
+                <a class='btn btn-danger btn-sm btn-grid' href="@Url.Action("Delete", new { id = item.pag_id})">
+                	<span class="glyphicon glyphicon-remove"></span> Eliminar
+                </a>
+        </td>
+    </tr>
+}
+                    </tbody>
+</table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/datatables")
+    <script type="text/javascript">
+        $("#btnSubmit").click(function () {
+            $("#divLoader").show();
+        });
+        $('#listar').DataTable({
+            "lengthMenu": [5, 10, 25, 50, 75, 100],
+            "pageLength": 5,
+            "records": 5,
+            "recordsFiltered": 10,
+            "language": {
+                "sProcessing": "Procesando...",
+                "sLengthMenu": "Mostrar _MENU_ Registros",
+                "sZeroRecords": "No se encontraron resultados",
+                "sEmptyTable": "Ningún dato disponible en esta tabla",
+                "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ Registros",
+                "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 Registros",
+                "sInfoFiltered": "(filtrado de un total de _MAX_ Registros)",
+                "sInfoPostFix": "",
+                "sSearch": "Buscar:",
+                "sUrl": "",
+                "sInfoThousands": ",",
+                "sLoadingRecords": "Cargando...",
+                "oPaginate": {
+                    "sFirst": "Primero",
+                    "sLast": "Último",
+                    "sNext": "Siguiente",
+                    "sPrevious": "Anterior"
+                }
+            }
+        });
+    </script>
+}

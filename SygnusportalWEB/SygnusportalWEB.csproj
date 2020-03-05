@@ -173,6 +173,7 @@
     <Compile Include="Controllers\EmpresasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PagaduriasController.cs" />
     <Compile Include="Controllers\PaisController.cs" />
     <Compile Include="Controllers\TipoPagaduriasController.cs" />
     <Compile Include="Global.asax.cs">
@@ -565,6 +566,11 @@
     <Content Include="Views\Empresas\Details.cshtml" />
     <Content Include="Views\Empresas\Edit.cshtml" />
     <Content Include="Views\Empresas\Index.cshtml" />
+    <Content Include="Views\Pagadurias\Create.cshtml" />
+    <Content Include="Views\Pagadurias\Delete.cshtml" />
+    <Content Include="Views\Pagadurias\Details.cshtml" />
+    <Content Include="Views\Pagadurias\Edit.cshtml" />
+    <Content Include="Views\Pagadurias\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

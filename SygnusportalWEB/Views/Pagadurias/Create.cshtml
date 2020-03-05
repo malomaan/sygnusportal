@@ -1,0 +1,203 @@
+﻿@model SygnusportalBD.Pagaduria
+
+@{
+    ViewBag.Title = "Pagaduria Create";
+}
+
+        <h2>Pagaduria Create</h2>
+<ul class="nav nav-tabs">
+    <li><a href="@Url.Action("Index")"><i class="far fa-list-alt"></i> Pagaduria</a></li>
+    <li class="active"><a href="@Url.Action("Create")"><i class="far fa-file"></i> Nuevo</a></li>
+</ul>
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+        <div class="panel-group">
+        <div class="panel panel-success">
+            <div class="panel-body">
+                <div id="divLoader" class="modal fade in Loading" role="dialog" style="display:none;">
+                    <center class="centrado">
+                        <h2>Procesando..</h2>
+                        <p></p>
+                        <img src="~/Content/Imagenes/Loading.gif" alt="Loader" />
+                    </center>
+                </div>
+                @if (ViewBag.Err != null)
+                {
+                    <div class="alert alert-danger">@ViewBag.Err</div>
+                }
+    <div class="form-horizontal">
+        @Html.ValidationSummary("", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.pag_codigo, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.pag_codigo, new { htmlAttributes = new { @class = "form-control", placeholder = Html.DisplayNameFor(x => x.pag_codigo) + " *" } })
+                @Html.ValidationMessageFor(model => model.pag_codigo, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.pag_nit, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.pag_nit, new { htmlAttributes = new { @class = "form-control", placeholder = Html.DisplayNameFor(x => x.pag_nit) + " *" } })
+                @Html.ValidationMessageFor(model => model.pag_nit, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.pag_dv, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.pag_dv, new { htmlAttributes = new { @class = "form-control", placeholder = Html.DisplayNameFor(x => x.pag_dv) + " *" } })
+                @Html.ValidationMessageFor(model => model.pag_dv, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.pag_nombre, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.pag_nombre, new { htmlAttributes = new { @class = "form-control", placeholder = Html.DisplayNameFor(x => x.pag_nombre) + " *" } })
+                @Html.ValidationMessageFor(model => model.pag_nombre, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.pag_direccion, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.pag_direccion, new { htmlAttributes = new { @class = "form-control", placeholder = Html.DisplayNameFor(x => x.pag_direccion) + " *" } })
+                @Html.ValidationMessageFor(model => model.pag_direccion, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ciu_codigo, "ciu_codigo", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("ciu_codigo", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ciu_codigo, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.pag_telefonos, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.pag_telefonos, new { htmlAttributes = new { @class = "form-control", placeholder = Html.DisplayNameFor(x => x.pag_telefonos) + " *" } })
+                @Html.ValidationMessageFor(model => model.pag_telefonos, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.pag_url, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.pag_url, new { htmlAttributes = new { @class = "form-control", placeholder = Html.DisplayNameFor(x => x.pag_url) + " *" } })
+                @Html.ValidationMessageFor(model => model.pag_url, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.pag_mail, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.pag_mail, new { htmlAttributes = new { @class = "form-control", placeholder = Html.DisplayNameFor(x => x.pag_mail) + " *" } })
+                @Html.ValidationMessageFor(model => model.pag_mail, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.pag_logo, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.pag_logo, new { htmlAttributes = new { @class = "form-control", placeholder = Html.DisplayNameFor(x => x.pag_logo) + " *" } })
+                @Html.ValidationMessageFor(model => model.pag_logo, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.pag_urlsygnus, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.pag_urlsygnus, new { htmlAttributes = new { @class = "form-control", placeholder = Html.DisplayNameFor(x => x.pag_urlsygnus) + " *" } })
+                @Html.ValidationMessageFor(model => model.pag_urlsygnus, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.pag_color, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.pag_color, new { htmlAttributes = new {id="colorPicker", @class = "form-control", placeholder = Html.DisplayNameFor(x => x.pag_color) + " *" } })
+                @Html.ValidationMessageFor(model => model.pag_color, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.tpa_id, "tpa_id", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("tpa_id", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.tpa_id, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.emp_nit, "emp_nit", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("emp_nit", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.emp_nit, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ent_id, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ent_id, new { htmlAttributes = new { @class = "form-control", placeholder = Html.DisplayNameFor(x => x.ent_id) + " *" } })
+                @Html.ValidationMessageFor(model => model.ent_id, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.pag_activa, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.pag_activa)
+                    @Html.ValidationMessageFor(model => model.pag_activa, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.pag_fax, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.pag_fax, new { htmlAttributes = new { @class = "form-control", placeholder = Html.DisplayNameFor(x => x.pag_fax) + " *" } })
+                @Html.ValidationMessageFor(model => model.pag_fax, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+    </div>
+
+            </div>
+            <div class="panel-footer">
+                <button type="submit" id="btnSubmit" class="btn btn-success btn-sm">
+                    <span class="glyphicon glyphicon-ok"></span> Guardar
+                </button>
+                <a class='btn btn-danger btn-sm' href="@Url.Action("Index")">
+                    <span class="glyphicon glyphicon-remove"></span> Cancelar
+                </a>
+
+            </div>
+        </div>
+    </div>
+
+
+
+}
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/datatables")
+    <script type="text/javascript">
+        $("#pag_id").focus();
+
+        $("#btnSubmit").click(function () {
+            $("#divLoader").show();
+        });
+
+    </script>
+
+}

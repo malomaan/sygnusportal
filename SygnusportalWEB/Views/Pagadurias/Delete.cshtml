@@ -1,0 +1,193 @@
+﻿@model SygnusportalBD.Pagaduria
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<p>
+        <h2>Pagaduria Delete</h2>
+</p>
+<ul class="nav nav-tabs">
+    <li><a href="@Url.Action("Index")"><i class="far fa-list-alt"></i> Pagaduria</a></li>
+    <li class="active"><a href="@Url.Action("Details",new { id = Model.pag_id })"><i class="far fa-file"></i> Delete</a></li>
+</ul>
+
+       <div class="panel-group">
+        <div class="panel panel-success">
+            <div class="panel-body">
+                <div id="divLoader" class="modal fade in Loading" role="dialog" style="display:none;">
+                    <center class="centrado">
+                        <h2>Procesando..</h2>
+                        <p></p>
+                        <img src="~/Content/Imagenes/Loading.gif" alt="Loader" />
+                    </center>
+                </div>
+<div>
+    <h3 class="text-center">¿Estás segura de que quieres eliminar el Registro?</h3>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.pag_codigo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pag_codigo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pag_nit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pag_nit)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pag_dv)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pag_dv)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pag_nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pag_nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pag_direccion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pag_direccion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pag_telefonos)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pag_telefonos)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pag_url)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pag_url)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pag_mail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pag_mail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pag_logo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pag_logo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pag_urlsygnus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pag_urlsygnus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pag_color)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pag_color)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ent_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ent_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pag_activa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pag_activa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pag_fax)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pag_fax)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ciudad.ciu_nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ciudad.ciu_nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Empresa.emp_nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Empresa.emp_nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TipoPagaduria.tpa_descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TipoPagaduria.tpa_descripcion)
+        </dd>
+
+    </dl>
+</div>
+            </div>
+            <div class="panel-footer">
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+                <button type="submit" id="btnSubmit" class="btn btn-success btn-sm">
+                    <span class="glyphicon glyphicon-ok"></span> Elimiar
+                </button>
+                <a class='btn btn-danger btn-sm' href="@Url.Action("Index")">
+                    <span class="glyphicon glyphicon-remove"></span> Cancelar
+                </a>
+    }
+            </div>
+        </div>
+    </div>
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/datatables")
+    <script type="text/javascript">
+        $("#btnSubmit").click(function () {
+            $("#divLoader").show();
+        });
+    </script>
+
+}
