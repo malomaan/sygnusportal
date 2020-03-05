@@ -11,26 +11,54 @@
     <link href="https://fonts.googleapis.com/css?family=Saira+Semi+Condensed" rel="stylesheet">
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar navbar-default navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
+                <img class="img-logo" src="~/Content/Imagenes/LogoNWS.jpg" alt="" />
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Nombre de la aplicación", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Acerca de", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
+                    <li><a href="~/Home/Index"><span class="fas fa-home  fa-2x icon-menu"></span> Inicio</a></li>
+                    @if (Request.IsAuthenticated)
+                    {
+                        <li class="dropdown uno">
+                            <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="fab fa-whmcs fa-2x icon-menu1"></span> Configuracion <span class="glyphicon glyphicon-chevron-down icon-menu-derecha"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="~/DatosDians/Index"><span class="glyphicon glyphicon-wrench icon-menu"></span> Sistema</a></li>
+                                <li><a href="~/Configuracions/Index"><span class="glyphicon glyphicon-envelope icon-menu"></span> Configuración de Correo</a></li>
+                                <li><a href="~/Rangos/Index"><span class="glyphicon glyphicon-shopping-cart icon-menu"></span> Rango Facturación</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="~/Empresas/Index"><span class="glyphicon glyphicon-briefcase icon-menu"></span> Datos de Empresa</a></li>
+                                <li><a href="~/Entidads/Index"><span class="glyphicon glyphicon-folder-close icon-menu"></span> Entidades pagadoras</a></li>
+
+                            </ul>
+                        </li>
+                        <li><a href="~/Replica/Index"><span class="far fa-share-square fa-2x icon-menu5"></span> Enviar</a></li>
+                        <li><a href="~/Replica/Replicas"><span class="fas fa-qrcode fa-2x icon-menu0"></span> Enviadas</a></li>
+                        <li><a href="~/Replica/Finalizadas"><span class="fas fa-history fa-2x icon-menu2"></span> Estados</a></li>
+                        <li class="dropdown uno">
+                            <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="far fa-envelope fa-2x icon-menu3"></span> Difundir <span class="glyphicon glyphicon-chevron-down icon-menu-derecha"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="~/Replica/Difundir"><span class="glyphicon glyphicon-volume-up icon-menu"></span> Difundir</a></li>
+                                <li><a href="~/Replica/BuscarFacturaEnviar"><span class="far fa-envelope icon-menu"></span> Enviar Factura Email</a></li>
+                            </ul>
+                        </li>
+
+                    }
                 </ul>
-                @Html.Partial("_LoginPartial")
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="~/Home/About"><span class="fas fa-info-circle fa-2x icon-menu1"></span> About</a></li>
+                    @Html.Partial("_LoginPartial")
+                </ul>
             </div>
         </div>
     </div>
+
     <div class="container body-content">
         @RenderBody()
     </div>
