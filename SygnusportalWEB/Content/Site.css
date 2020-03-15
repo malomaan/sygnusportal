@@ -132,9 +132,9 @@ textarea {
 }
 
 .modal-header {
-    background-color: #6aa01c;
+    background-color: #1F4189;
     color: #fff;
-    border-color: #6aa01c;
+    border-color: #1F4189;
     border-style: solid;
     border-width: 1px;
     border-radius: 5px 5px 0px 0px;
@@ -399,6 +399,12 @@ dd {
     font-size: 20px;
     color: violet;
 }
+
+.icon-menu11 {
+    font-size: 20px;
+    color: lightcyan;
+}
+
 
 .icon-alet1 {
     color: white;

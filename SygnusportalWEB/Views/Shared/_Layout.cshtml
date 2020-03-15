@@ -23,7 +23,7 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="~/Home/Index"><span class="fas fa-home  fa-2x icon-menu"></span> Inicio</a></li>
+                    <li><a href="~/Home/Index"><span class="fas fa-home  fa-2x icon-menu11"></span> Inicio</a></li>
                     @if (Request.IsAuthenticated)
                     {
                         <li class="dropdown uno">
@@ -41,9 +41,16 @@
                     }
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
+
                     <li><a href="~/Home/About"><span class="fas fa-info-circle fa-2x icon-menu1"></span> About</a></li>
-                    @Html.Partial("_LoginPartial")
-                </ul>
+                    @if (!Request.IsAuthenticated)
+                    {
+
+                        <li><a href="~/Account/Login"><span class="fas fa-lock fa-2x icon-menu3"></span> Iniciar Sesión</a></li>
+                    }
+
+                        @Html.Partial("_LoginPartial")
+                    </ul>
             </div>
         </div>
     </div>

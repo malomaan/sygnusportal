@@ -106,24 +106,27 @@
                     </table>
                 </div>
                 <div class="panel-footer">
-                    <a href="~/Replica">
+                    <a href="@item.pag_url">
                         <span class="pull-left">
-                            <i class="fas fa-bell icon-alet2">
-                                @{
-                                    if (item.cano_id == null)
-                                    {
-                                        <span class="badge badge-error">No Habilitado</span>
+                            <h2>Portal del Beneficiario</h2>
+                            </span>
+                            <span class="pull-left">
+                                <i class="fas fa-bell icon-alet2">
+                                    @{
+                                        if (item.cano_id == null)
+                                        {
+                                            <span class="badge badge-error">No Habilitado</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="badge badge-warning">Habilitado</span>
+                                        }
                                     }
-                                    else
-                                    {
-                                        <span class="badge badge-warning">Habilitado</span>
-                                    }
-                                }
-                            </i> Entrar
-                        </span>
-                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                        <div class="clearfix"></div>
-                    </a>
+                                </i> Entrar
+                            </span>
+                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                            <div class="clearfix"></div>
+</a>
 
                 </div>
 
