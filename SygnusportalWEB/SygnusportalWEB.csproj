@@ -351,6 +351,8 @@
     <Content Include="Content\DataTables\swf\flashExport.swf" />
     <Content Include="Content\Imagenes\background.jpg" />
     <Content Include="Content\Imagenes\Loading.gif" />
+    <Content Include="Content\Imagenes\LogoCompacto.fw.png" />
+    <Content Include="Content\Imagenes\LogoCompactoMejorado.fw.png" />
     <Content Include="Content\Imagenes\Plantilla\01001.png" />
     <Content Include="Content\Imagenes\Plantilla\01010.png" />
     <Content Include="Content\Imagenes\Plantilla\010102.jpg" />
@@ -411,6 +413,7 @@
     <Content Include="Content\Imagenes\Plantilla\Toponw201904.fw.png" />
     <Content Include="Content\Imagenes\Plantilla\top_produccionV2_fw.png" />
     <Content Include="Content\Imagenes\LogoNWS.jpg" />
+    <Content Include="Content\Imagenes\SoloLogoBrujula.fw.png" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
     <Content Include="Content\themes\base\autocomplete.css" />

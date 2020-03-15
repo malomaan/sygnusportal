@@ -11,7 +11,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     @Html.ActionLink(" ", "Index", "Home", null, new { @class = "close boxclose" })
-                    <h4 class="modal-title" id="myModalLabel"><span class="fa fa-key"></span>@ViewBag.Title</h4>
+                    <h4 class="modal-title" id="myModalLabel"><span class="fa fa-key"></span> @ViewBag.Title</h4>
                 </div>
                 <div class="modal-body">
                     <div id="divLoader" class="modal fade in Loading" role="dialog" style="display:none;">
@@ -70,6 +70,9 @@
                         <span class="glyphicon glyphicon-share-alt"></span> Restablecer Contraseña
                     </a>
 
+                    <a class='btn btn-danger btn-sm' href="@Url.Action("Index","Home")">
+                        <span class="glyphicon glyphicon-ok"></span> Cancelar
+                    </a>
 
                     <button type="submit" id="btnSubmit" class="btn btn-success btn-sm">
                         <span class="glyphicon glyphicon-lock"></span> Ingresar

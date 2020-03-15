@@ -1,5 +1,5 @@
 ﻿body {
-    padding-top: 150px;
+    padding-top: 100px;
     padding-bottom: 20px;
     background-image: url("Imagenes/background.jpg");
     background-repeat: no-repeat;
@@ -33,7 +33,10 @@ textarea {
     width: 100%;
 }
 
-
+.img-logo{
+    width:80px;
+    height:50px;
+}
 
 /*Personalizar*/
 
@@ -427,12 +430,12 @@ dd {
 
 
 /*Menú Vertical Izquierdo*/
-.fa-2x {
+/*.fa-2x {
     font-size: 2em;
     /*color: #fff;*/
-}
+}*/
 
-.fa {
+/*.fa {
     position: relative;
     display: table-cell;
     width: 60px;
@@ -440,7 +443,7 @@ dd {
     text-align: center;
     vertical-align: middle;
     font-size: 20px;
-}
+}*/
 
 .main-menu:hover, nav.main-menu.expanded {
     width: 295px;

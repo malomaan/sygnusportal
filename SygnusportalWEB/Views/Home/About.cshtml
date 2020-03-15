@@ -1,7 +1,37 @@
 ﻿@{
-    ViewBag.Title = "About";
+    ViewBag.Title = "Información";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
 
-<p>Use this area to provide additional information.</p>
+<div class="modal fade in" role="dialog" id="myModal" tabindex="-1" data-backdrop="false" data-keyboard="false" aria-labelledby="myModalLabel" style="display: block;overflow-y: scroll;">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                @Html.ActionLink(" ", "Index", "Home", null, new { @class = "close boxclose" })
+                <h4 class="modal-title" id="myModalLabel"><span class="fa fa-key"></span> @ViewBag.Title</h4>
+            </div>
+            <div class="modal-body">
+                <div id="divLoader" class="modal fade in Loading" role="dialog" style="display:none;">
+                    <center class="centrado">
+                        Procesando
+                        <p></p>
+                        <img src="~/Content/Imagenes/Imagen/Loading.gif" alt="Loader" />
+                    </center>
+                </div>
+                <h2>
+                    Ecosistema S Y G N U S                   
+                </h2>
+                <hr />
+                <p>
+                    Pagadurías Activas en Plataforma SYGNUS, todos los derechos reservador North Way Services S.A.S.
+                    
+                </p>
+
+            </div>
+            <div class="modal-footer">
+                <a class='btn btn-success btn-sm' href="@Url.Action("Index")">
+                    <span class="glyphicon glyphicon-ok"></span> Aceptar
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
