@@ -173,6 +173,44 @@ namespace SygnusportalPRC
             }
         }
 
+
+
+        /// <summary>
+        /// Procedimiento que muestra el listado se pagadurías activas Habilitadas y sus estados capa PRC
+        /// </summary>
+        /// <returns></returns>
+        public List<Pagaduria_ListActivasPeriodos_Habilitada_Result> Pagaduria_ListActivasPeriodos_Habilitada()
+        {
+            try
+            {
+                var Pagaduria = (from TPagaduria in BDPagaduria.Pagaduria_ListActivasPeriodos_Habilitada() select TPagaduria).ToList();
+                return Pagaduria;
+            }
+            catch (Exception Ex)
+            {
+                throw (Ex);
+            }
+        }
+
+
+        /// <summary>
+        /// Procedimiento que muestra el listado se pagadurías activas por tipo y sus estados capa PRC
+        /// </summary>
+        /// <returns></returns>
+        public List<Pagaduria_ListActivasPeriodos_Tipo_Result> Pagaduria_ListActivasPeriodos_Tipo(int tpa_id)
+        {
+            try
+            {
+                var Pagaduria = (from TPagaduria in BDPagaduria.Pagaduria_ListActivasPeriodos_Tipo(tpa_id) select TPagaduria).ToList();
+                return Pagaduria;
+            }
+            catch (Exception Ex)
+            {
+                throw (Ex);
+            }
+        }
+
+
     }
     //FIN DE LA CLASE
 }

@@ -585,5 +585,19 @@ namespace SygnusportalBD
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Departamento_List_Pais_Result>("Departamento_List_Pais", pai_codigoParameter);
         }
+    
+        public virtual ObjectResult<Pagaduria_ListActivasPeriodos_Habilitada_Result> Pagaduria_ListActivasPeriodos_Habilitada()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Pagaduria_ListActivasPeriodos_Habilitada_Result>("Pagaduria_ListActivasPeriodos_Habilitada");
+        }
+    
+        public virtual ObjectResult<Pagaduria_ListActivasPeriodos_Tipo_Result> Pagaduria_ListActivasPeriodos_Tipo(Nullable<int> tpa_id)
+        {
+            var tpa_idParameter = tpa_id.HasValue ?
+                new ObjectParameter("tpa_id", tpa_id) :
+                new ObjectParameter("tpa_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Pagaduria_ListActivasPeriodos_Tipo_Result>("Pagaduria_ListActivasPeriodos_Tipo", tpa_idParameter);
+        }
     }
 }

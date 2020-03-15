@@ -18,6 +18,14 @@ namespace SygnusportalWEB.Controllers
 
         }
 
+        public ActionResult Habilitadas()
+        {
+            var TPagaduria = db.Pagaduria_ListActivasPeriodos().ToList();
+            return View(TPagaduria);
+            return View();
+        }
+
+
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
