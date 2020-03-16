@@ -1,0 +1,138 @@
+﻿@model IEnumerable<SygnusportalBD.Pagaduria_ListActivasPeriodos_Nombre_Result>
+
+@{
+    ViewBag.Title = "Ecosistema SYGNUS";
+}
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-4">
+            <div class="panel panel-@item.pag_color">
+                <div class="panel-heading text-center">
+                    <a href="@item.pag_urlsygnus">
+                        <div class="row">
+                            <div class="col-xs-12 text-left">
+                                <div class="hugetitle">Pagaduría</div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="panel-body">
+                    <a href="@item.pag_urlsygnus">
+                        <div class="row">
+                            <div class="col-xs-12 text-center">
+                                <div class="hugetitle">@item.pag_nombre</div>
+                                <img src="~/Content/@item.pag_logo" class="img-rounded" width="250" height="160" />
+                                <p>NIT: @item.pag_nit - @item.pag_dv </p>
+                            </div>
+                        </div>
+                    </a>
+
+                    <table class="table table-borderless table-sm table-responsive">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    Estado
+                                </td>
+                                <td class="text-right">
+                                    @{
+                                        if (item.cano_id == null)
+                                        {
+                                            <span class="badge badge-error">No Habilitado</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="badge badge-warning">Habilitado</span>
+                                        }
+                                    }
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Período
+                                </td>
+                                <td class="text-right">
+                                    @{
+                                        if (item.cano_id != null)
+                                        {
+
+                                            <span class="badge badge-success">@item.cano_descripcion.ToUpper()</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="badge badge-warning">N/A</span>
+                                        }
+                                    }
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    Fecha Inicio
+                                </td>
+                                <td class="text-right">
+                                    @{
+                                        if (item.cano_id != null)
+                                        {
+                                            <span class="badge badge-success">@item.cano_fechainicio</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="badge badge-warning">N/A</span>
+                                        }
+                                    }
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Fecha Final
+                                </td>
+                                <td class="text-right">
+                                    @{
+                                        if (item.cano_id != null)
+                                        {
+                                            <span class="badge badge-success">@item.cano_fechafinal</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="badge badge-warning">N/A</span>
+                                        }
+                                    }
+                                </td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="panel-footer">
+                    <a href="@item.pag_url">
+                        <span class="pull-left">
+                            <h2>Portal del Beneficiario</h2>
+                        </span>
+                        <span class="pull-left">
+                            <i class="fas fa-bell icon-alet2">
+                                @{
+                                    if (item.cano_id == null)
+                                    {
+                                        <span class="badge badge-error">No Habilitado</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge badge-warning">Habilitado</span>
+                                    }
+                                }
+                            </i> Entrar
+                        </span>
+                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                        <div class="clearfix"></div>
+                    </a>
+
+                </div>
+
+
+            </div>
+        </div>
+
+    }
+</div>

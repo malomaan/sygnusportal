@@ -635,6 +635,9 @@
     <Content Include="Views\Pagadurias\Details.cshtml" />
     <Content Include="Views\Pagadurias\Edit.cshtml" />
     <Content Include="Views\Pagadurias\Index.cshtml" />
+    <Content Include="Views\Home\Habilitadas.cshtml" />
+    <Content Include="Views\Home\Tipos.cshtml" />
+    <Content Include="Views\Home\Nombres.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -88,6 +88,9 @@
     <Compile Include="Pagaduria_ListActivasPeriodos_Habilitada_Result.cs">
       <DependentUpon>sygnusportalModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Pagaduria_ListActivasPeriodos_Nombre_Result.cs">
+      <DependentUpon>sygnusportalModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Pagaduria_ListActivasPeriodos_Result.cs">
       <DependentUpon>sygnusportalModel.tt</DependentUpon>
     </Compile>

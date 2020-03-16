@@ -210,6 +210,22 @@ namespace SygnusportalPRC
             }
         }
 
+        /// <summary>
+        /// Procedimiento que muestra el listado se pagadurías activas por Nombres y sus estados capa PRC
+        /// </summary>
+        /// <returns></returns>
+        public List<Pagaduria_ListActivasPeriodos_Nombre_Result> Pagaduria_ListActivasPeriodos_Nombre(string pag_nombve)
+        {
+            try
+            {
+                var Pagaduria = (from TPagaduria in BDPagaduria.Pagaduria_ListActivasPeriodos_Nombre(pag_nombve) select TPagaduria).ToList();
+                return Pagaduria;
+            }
+            catch (Exception Ex)
+            {
+                throw (Ex);
+            }
+        }
 
     }
     //FIN DE LA CLASE

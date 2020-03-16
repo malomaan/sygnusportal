@@ -9,14 +9,21 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using SygnusportalWEB.Models;
+using SygnusportalBD;
+using SygnusportalPRC;
+using System.Data;
+using System.Data.Entity;
+using System.Collections.Generic;
 
 namespace SygnusportalWEB.Controllers
 {
     [Authorize]
+
     public class AccountController : Controller
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private sygnusportalEntities db = new sygnusportalEntities();
 
         public AccountController()
         {
@@ -57,6 +64,9 @@ namespace SygnusportalWEB.Controllers
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
+            List<TipoPagaduria> TipoList = db.TipoPagaduria.ToList();
+            ViewBag.Tipo = TipoList;
+
             ViewBag.ReturnUrl = returnUrl;
             return View();
         }
@@ -68,6 +78,8 @@ namespace SygnusportalWEB.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
         {
+
+
             if (!ModelState.IsValid)
             {
                 return View(model);

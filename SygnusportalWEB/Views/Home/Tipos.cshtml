@@ -1,4 +1,4 @@
-﻿@model IEnumerable<SygnusportalBD.Pagaduria_ListActivasPeriodos_Nombre_Result>
+﻿@model IEnumerable<SygnusportalBD.Pagaduria_ListActivasPeriodos_Tipo_Result>
 
 @{
     ViewBag.Title = "Ecosistema SYGNUS";
@@ -142,6 +142,7 @@
 else
 {
 
+
     <div class="alert alert-success" role="alert">
         <h2><span class="fas fa-info  fa-2x icon-menu11"></span> No hay Pagadurías en este filtro</h2>
         <div class="alert alert-warning" role="alert">
@@ -149,10 +150,4 @@ else
         </div>
     </div>
 
-}
-@section Scripts
-{
-    <script type="text/javascript">
-        $("#Id").focus();
-    </script>
 }

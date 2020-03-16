@@ -1,11 +1,11 @@
-﻿@model IEnumerable<SygnusportalBD.Pagaduria_ListActivasPeriodos_Nombre_Result>
+﻿@model IEnumerable<SygnusportalBD.Pagaduria_ListActivasPeriodos_Habilitada_Result>
 
 @{
     ViewBag.Title = "Ecosistema SYGNUS";
 }
+
 @if (Model.Count() != 0)
 {
-
     <div class="row">
         @foreach (var item in Model)
         {
@@ -142,17 +142,11 @@
 else
 {
 
-    <div class="alert alert-success" role="alert">
-        <h2><span class="fas fa-info  fa-2x icon-menu11"></span> No hay Pagadurías en este filtro</h2>
-        <div class="alert alert-warning" role="alert">
-            No se encontró información con el filtro aplicado, por favor hacer clic en Inicio para ver todas las pagadurías
-        </div>
+<div class="alert alert-success" role="alert">
+    <h2><span class="fas fa-info  fa-2x icon-menu11"></span> No hay Pagadurías en este filtro</h2>
+    <div class="alert alert-warning" role="alert">
+        No se encontró información con el filtro aplicado, por favor hacer clic en Inicio para ver todas las pagadurías
     </div>
+</div>
+}
 
-}
-@section Scripts
-{
-    <script type="text/javascript">
-        $("#Id").focus();
-    </script>
-}

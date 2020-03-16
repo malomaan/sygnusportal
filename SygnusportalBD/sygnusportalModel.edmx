@@ -255,6 +255,9 @@
         </Function>
         <Function Name="Pagaduria_ListActivasPeriodos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="Pagaduria_ListActivasPeriodos_Habilitada" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Pagaduria_ListActivasPeriodos_Nombre" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="pag_nombre" Type="varchar" Mode="In" />
+        </Function>
         <Function Name="Pagaduria_ListActivasPeriodos_Tipo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="tpa_id" Type="int" Mode="In" />
         </Function>
@@ -719,7 +722,10 @@
           </FunctionImport>
           <FunctionImport Name="Pagaduria_ListActivasPeriodos_Habilitada" ReturnType="Collection(sygnusportalModel.Pagaduria_ListActivasPeriodos_Habilitada_Result)" />
           <FunctionImport Name="Pagaduria_ListActivasPeriodos_Tipo" ReturnType="Collection(sygnusportalModel.Pagaduria_ListActivasPeriodos_Tipo_Result)">
-            <Parameter Name="tpa_id" Mode="In" Type="Int32" />
+          <Parameter Name="tpa_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Pagaduria_ListActivasPeriodos_Nombre" ReturnType="Collection(sygnusportalModel.Pagaduria_ListActivasPeriodos_Nombre_Result)">
+            <Parameter Name="pag_nombre" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="Ciudad_List_Result">
@@ -838,6 +844,29 @@
           <Property Type="DateTime" Name="cano_fechapriorizados" Nullable="true" Precision="23" />
         </ComplexType>
         <ComplexType Name="Pagaduria_ListActivasPeriodos_Tipo_Result">
+          <Property Type="String" Name="pag_nit" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="pag_dv" Nullable="true" />
+          <Property Type="String" Name="pag_nombre" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="pag_direccion" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="ciu_codigo" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="pag_telefonos" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="pag_fax" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="pag_mail" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="pag_logo" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="pag_url" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="pag_urlsygnus" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="emp_nit" Nullable="true" MaxLength="50" />
+          <Property Type="Boolean" Name="pag_activa" Nullable="true" />
+          <Property Type="Int32" Name="tpa_id" Nullable="true" />
+          <Property Type="String" Name="pag_color" Nullable="true" MaxLength="250" />
+          <Property Type="Int32" Name="ent_id" Nullable="true" />
+          <Property Type="Int32" Name="cano_id" Nullable="true" />
+          <Property Type="String" Name="cano_descripcion" Nullable="true" MaxLength="250" />
+          <Property Type="DateTime" Name="cano_fechainicio" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="cano_fechafinal" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="cano_fechapriorizados" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="Pagaduria_ListActivasPeriodos_Nombre_Result">
           <Property Type="String" Name="pag_nit" Nullable="true" MaxLength="50" />
           <Property Type="Int32" Name="pag_dv" Nullable="true" />
           <Property Type="String" Name="pag_nombre" Nullable="true" MaxLength="250" />
@@ -1134,6 +1163,33 @@
           <FunctionImportMapping FunctionImportName="Pagaduria_ListActivasPeriodos_Tipo" FunctionName="sygnusportalModel.Store.Pagaduria_ListActivasPeriodos_Tipo">
             <ResultMapping>
               <ComplexTypeMapping TypeName="sygnusportalModel.Pagaduria_ListActivasPeriodos_Tipo_Result">
+                <ScalarProperty Name="pag_nit" ColumnName="pag_nit" />
+                <ScalarProperty Name="pag_dv" ColumnName="pag_dv" />
+                <ScalarProperty Name="pag_nombre" ColumnName="pag_nombre" />
+                <ScalarProperty Name="pag_direccion" ColumnName="pag_direccion" />
+                <ScalarProperty Name="ciu_codigo" ColumnName="ciu_codigo" />
+                <ScalarProperty Name="pag_telefonos" ColumnName="pag_telefonos" />
+                <ScalarProperty Name="pag_fax" ColumnName="pag_fax" />
+                <ScalarProperty Name="pag_mail" ColumnName="pag_mail" />
+                <ScalarProperty Name="pag_logo" ColumnName="pag_logo" />
+                <ScalarProperty Name="pag_url" ColumnName="pag_url" />
+                <ScalarProperty Name="pag_urlsygnus" ColumnName="pag_urlsygnus" />
+                <ScalarProperty Name="emp_nit" ColumnName="emp_nit" />
+                <ScalarProperty Name="pag_activa" ColumnName="pag_activa" />
+                <ScalarProperty Name="tpa_id" ColumnName="tpa_id" />
+                <ScalarProperty Name="pag_color" ColumnName="pag_color" />
+                <ScalarProperty Name="ent_id" ColumnName="ent_id" />
+                <ScalarProperty Name="cano_id" ColumnName="cano_id" />
+                <ScalarProperty Name="cano_descripcion" ColumnName="cano_descripcion" />
+                <ScalarProperty Name="cano_fechainicio" ColumnName="cano_fechainicio" />
+                <ScalarProperty Name="cano_fechafinal" ColumnName="cano_fechafinal" />
+                <ScalarProperty Name="cano_fechapriorizados" ColumnName="cano_fechapriorizados" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Pagaduria_ListActivasPeriodos_Nombre" FunctionName="sygnusportalModel.Store.Pagaduria_ListActivasPeriodos_Nombre">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="sygnusportalModel.Pagaduria_ListActivasPeriodos_Nombre_Result">
                 <ScalarProperty Name="pag_nit" ColumnName="pag_nit" />
                 <ScalarProperty Name="pag_dv" ColumnName="pag_dv" />
                 <ScalarProperty Name="pag_nombre" ColumnName="pag_nombre" />
